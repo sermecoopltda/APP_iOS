@@ -1,0 +1,20 @@
+PODS:
+  - KeychainSwift (13.0.0)
+  - Unbox (3.0.0)
+
+DEPENDENCIES:
+  - KeychainSwift
+  - Unbox
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - KeychainSwift
+    - Unbox
+
+SPEC CHECKSUMS:
+  KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
+  Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
+
+PODFILE CHECKSUM: 911848560e8ab15afbaea2f27727864c80da8a59
+
+COCOAPODS: 1.5.3

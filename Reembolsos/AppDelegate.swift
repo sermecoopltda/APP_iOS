@@ -8,6 +8,8 @@
 
 import UIKit
 
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +18,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+
+        if SessionModel.current != nil {
+            let controller = SplashViewController()
+            controller.loginHandler = {
+                (success: Bool) in
+                if success {
+                    self.switchToTabBarController(animated: true)
+                } else {
+                    SessionModel.signOut()
+                    self.switchToLoginViewController(animated: false)
+                }
+            }
+            window?.rootViewController = controller
+        } else {
+            window?.rootViewController = LoginViewController()
+        }
+        window?.makeKeyAndVisible()
+
         return true
     }
 
@@ -41,6 +63,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    @objc func signOutButtonTouched(_ sender: Any) {
+        let controller = UIAlertController(title: "Cerrar Sesión", message: "¿Estás seguro que deseas cerrar sesión?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let confirmAction = UIAlertAction(title: "Cerrar Sesión", style: .destructive, handler: {
+            _ in
+            SessionModel.signOut()
+            self.switchToLoginViewController(animated: true)
+        })
+        controller.addAction(cancelAction)
+        controller.addAction(confirmAction)
+        controller.preferredAction = cancelAction
+        window?.rootViewController?.present(controller, animated: true, completion: nil)
+    }
+
+    func switchToTabBarController(animated: Bool) {
+        let transactionsViewController = SegmentedViewController()
+        transactionsViewController.viewControllers = [TransactionsTrackingViewController(), TransactionsHistoryViewController()]
+        transactionsViewController.tabBarItem = UITabBarItem(title: "Mis Movimientos", image: #imageLiteral(resourceName: "tabBar-transactions"), tag: 1)
+
+        let viewControllers = [RefundsViewController(), transactionsViewController, ProfileViewController()]
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = viewControllers.map {
+            $0.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navBar-signOut"), style: .plain, target: self, action: #selector(AppDelegate.signOutButtonTouched(_:)))
+            return NavigationController(rootViewController: $0)
+        }
+        tabBarController.tabBar.barTintColor = UIColor(hex: "#003ca6")
+        tabBarController.tabBar.unselectedItemTintColor = UIColor(hex: "#7c85bc")
+        tabBarController.tabBar.tintColor = .white
+        tabBarController.tabBar.isTranslucent = false
+
+        if animated {
+            let transition = CATransition()
+            transition.type = .reveal
+            transition.subtype = .fromBottom
+            transition.isRemovedOnCompletion = true
+            transition.fillMode = .forwards
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
+            transition.duration = 0.3
+            window?.layer.add(transition, forKey: nil)
+        }
+        window?.rootViewController = tabBarController
+    }
+
+    func switchToLoginViewController(animated: Bool) {
+        if animated {
+            let transition = CATransition()
+            transition.type = .reveal
+            transition.subtype = .fromTop
+            transition.isRemovedOnCompletion = true
+            transition.fillMode = .forwards
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+            transition.duration = 0.3
+            window?.layer.add(transition, forKey: nil)
+        }
+        window?.rootViewController = LoginViewController()
+    }
 
 }
 
