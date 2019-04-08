@@ -51,7 +51,15 @@ class RefundTermsViewController: UIViewController {
                     , baseURL: nil)
             } else {
                 self.activityIndicator.stopAnimating()
-                // error alert
+                let controller = UIAlertController(title: "Error Obteniendo Datos",
+                                                   message: "Ocurrió un error al intentar obtener los datos de prestaciones. Por favor revisa los ajustes de tu conexión de red e intenta nuevamente.",
+                                                   preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Aceptar", style: .default, handler: {
+                    _ in
+                    self.dismiss(animated: true, completion: nil)
+                })
+                controller.addAction(okAction)
+                self.present(controller, animated: true, completion: nil)
             }
         })
     }
