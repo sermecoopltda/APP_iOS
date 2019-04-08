@@ -119,6 +119,7 @@
 		76E77483225AE6CB0017F10E /* BenefitRulesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitRulesModel.swift; sourceTree = "<group>"; };
 		76E77485225AE7370017F10E /* DocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentModel.swift; sourceTree = "<group>"; };
 		76E77487225AE7B60017F10E /* BenefitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitModel.swift; sourceTree = "<group>"; };
+		76E77489225AF2C50017F10E /* Reembolsos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reembolsos.entitlements; sourceTree = "<group>"; };
 		CC6ED1B86FF3EF6D21E50D43 /* Pods-Reembolsos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reembolsos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reembolsos/Pods-Reembolsos.debug.xcconfig"; sourceTree = "<group>"; };
 		E0C0836C94877122DB9C5735 /* Pods-Reembolsos.archive.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reembolsos.archive.xcconfig"; path = "Pods/Target Support Files/Pods-Reembolsos/Pods-Reembolsos.archive.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +165,7 @@
 		7606E6F62239817700C24D9E /* Reembolsos */ = {
 			isa = PBXGroup;
 			children = (
+				76E77489225AF2C50017F10E /* Reembolsos.entitlements */,
 				7606E6F72239817700C24D9E /* AppDelegate.swift */,
 				7606E7092239828500C24D9E /* viewcontrollers */,
 				7606E70E2239CF2000C24D9E /* views */,
@@ -330,6 +332,11 @@
 				TargetAttributes = {
 					7606E6F32239817700C24D9E = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					76E774662256FF1C0017F10E = {
 						CreatedOnToolsVersion = 10.2;
@@ -605,6 +612,7 @@
 			buildSettings = {
 				ACTIVE_BUILD_CONFIGURATION = DEBUG;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Reembolsos/Reembolsos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA2RF356XT;
 				INFOPLIST_FILE = Reembolsos/Info.plist;
@@ -626,6 +634,7 @@
 			buildSettings = {
 				ACTIVE_BUILD_CONFIGURATION = RELEASE;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Reembolsos/Reembolsos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA2RF356XT;
 				INFOPLIST_FILE = Reembolsos/Info.plist;
@@ -702,6 +711,7 @@
 			buildSettings = {
 				ACTIVE_BUILD_CONFIGURATION = ARCHIVE;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Reembolsos/Reembolsos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA2RF356XT;
 				INFOPLIST_FILE = Reembolsos/Info.plist;
