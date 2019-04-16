@@ -35,6 +35,28 @@ public class APIClient: HTTPClient {
         performCall(URL: endpointURL, method: method, contentType: contentType, parameters: parameters, headers: newHeaders, completionHandler: completionHandler)
     }
 
+    private func performUpload(authenticated: Bool = false, method: HTTPMethod, path: String, data: Data, headers: [String: String]? = nil, completionHandler: @escaping HTTPClientCompletionHandler) {
+        guard let endpointURL = URL(string: path, relativeTo: baseURL) else {
+            completionHandler(false, nil, nil)
+            return
+        }
+        var newHeaders: [String: String] = [:]
+        if let headers = headers {
+            for key in headers.keys {
+                newHeaders[key] = headers[key]
+            }
+        }
+        if authenticated {
+            guard let currentUser = SessionModel.current else {
+                NSLog("not currentUser")
+                completionHandler(false, nil, nil)
+                return
+            }
+            newHeaders["Authorization"] = currentUser.token
+        }
+        performUpload(URL: endpointURL, data: data, method: method, headers: newHeaders, completionHandler: completionHandler)
+    }
+
     // MARK: - Public Methods
 
     public func login(username: String, password: String, completionHandler: ((Bool, String?) -> ())?) {
@@ -79,6 +101,109 @@ public class APIClient: HTTPClient {
                             }
                         } else {
                             NSLog("benefitRules API call failed")
+                            completionHandler?(false, nil)
+                        }
+        })
+    }
+
+    public func profile(completionHandler: ((Bool, UserModel?) -> ())?) {
+        let path = "obtenerPerfil.php"
+
+        performCall(authenticated: true,
+                    method: .GET,
+                    path: path,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        if success, let json = json as? HTTPClientResponseJSON {
+                            do {
+                                let user: UserModel = try unbox(dictionary: json)
+                                completionHandler?(true, user)
+                            } catch let error {
+                                NSLog("profile API call failed; error: \(error)")
+                                completionHandler?(false, nil)
+                            }
+                        } else {
+                            NSLog("profile API call failed")
+                            completionHandler?(false, nil)
+                        }
+        })
+    }
+
+    public func updateProfile(name: String?, phoneNumber: String?, email: String?, completionHandler: ((Bool) -> ())?) {
+        let path = "modificarPerfil.php"
+        var parameters: HTTPClientParameters = [:]
+        if let name = name {
+            parameters["nombre"] = name
+        }
+        if let phoneNumber = phoneNumber {
+            parameters["telefono"] = phoneNumber
+        }
+        if let email = email {
+            parameters["email"] = email
+        }
+
+        if parameters.count == 0 {
+            completionHandler?(true)
+            return
+        }
+
+        performCall(authenticated: true,
+                    method: .POST,
+                    path: path,
+                    parameters: parameters,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        if success, let response = response, response.statusCode == 200 {
+                            completionHandler?(true)
+                        } else {
+                            NSLog("updateProfile API call failed")
+                            completionHandler?(false)
+                        }
+        })
+    }
+
+    public func requestRefund(amount: Int, beneficiary: String, benefit: Int, notes: String, completionHandler: ((Bool, String?) -> ())?) {
+        let path = "nuevoReembolso.php"
+        let parameters: HTTPClientParameters = [
+            "beneficiario": beneficiary,
+            "tipo_prestacion": benefit,
+            "monto": amount,
+            "observaciones": notes
+        ]
+
+        performCall(authenticated: true,
+                    method: .POST,
+                    path: path,
+                    parameters: parameters,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        if success, let json = json as? HTTPClientResponseJSON, let identifier = json["folio"] as? String {
+                            completionHandler?(true, identifier)
+                        } else {
+                            NSLog("requestRefund API call failed")
+                            completionHandler?(false, nil)
+                        }
+        })
+    }
+
+    public func uploadPicture(data: Data, identifier: String, documentCode: Int, completionHandler: ((Bool, URL?) -> ())?) {
+        let path = "upload.php"
+        let headers: [String: String] = [
+            "folio": identifier,
+            "tipoDoc": String(documentCode)
+        ]
+
+        performUpload(authenticated: true,
+                      method: .PUT,
+                      path: path,
+                      data: data,
+                      headers: headers, completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        NSLog("performUpload returned; json: \(String(describing: json))")
+                        if success, let json = json as? HTTPClientResponseJSON, let uploadedURL = json["url"] as? String {
+                            completionHandler?(true, URL(string: uploadedURL))
+                        } else {
+                            NSLog("uploadPicture API call failed; response: \(response); json: \(json)")
                             completionHandler?(false, nil)
                         }
         })

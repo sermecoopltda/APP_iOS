@@ -23,6 +23,12 @@
 		763445BE225483EF00915BC7 /* StatusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763445BD225483EF00915BC7 /* StatusIndicatorView.swift */; };
 		763445C1225515D300915BC7 /* TrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763445BF225515D300915BC7 /* TrackingTableViewCell.swift */; };
 		763445C2225515D300915BC7 /* TrackingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763445C0225515D300915BC7 /* TrackingTableViewCell.xib */; };
+		763E136B226582A7005D9DAA /* RefundDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E1369226582A7005D9DAA /* RefundDocumentTableViewCell.swift */; };
+		763E136C226582A7005D9DAA /* RefundDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763E136A226582A7005D9DAA /* RefundDocumentTableViewCell.xib */; };
+		763E136E22659039005D9DAA /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E136D22659039005D9DAA /* PriceFormatter.swift */; };
+		763E13702265A93D005D9DAA /* UploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E136F2265A93D005D9DAA /* UploadOperation.swift */; };
+		763EE11F226062BC00BF6921 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EE11E226062BC00BF6921 /* UserModel.swift */; };
+		763EE1212260646200BF6921 /* BeneficiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EE1202260646200BF6921 /* BeneficiaryModel.swift */; };
 		7652548A224D46EE00849401 /* TrackingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76525488224D46EE00849401 /* TrackingDetailViewController.swift */; };
 		7652548B224D46EE00849401 /* TrackingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76525489224D46EE00849401 /* TrackingDetailViewController.xib */; };
 		7652548E224D46FF00849401 /* HistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7652548C224D46FF00849401 /* HistoryDetailViewController.swift */; };
@@ -83,6 +89,12 @@
 		763445BD225483EF00915BC7 /* StatusIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicatorView.swift; sourceTree = "<group>"; };
 		763445BF225515D300915BC7 /* TrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTableViewCell.swift; sourceTree = "<group>"; };
 		763445C0225515D300915BC7 /* TrackingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingTableViewCell.xib; sourceTree = "<group>"; };
+		763E1369226582A7005D9DAA /* RefundDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDocumentTableViewCell.swift; sourceTree = "<group>"; };
+		763E136A226582A7005D9DAA /* RefundDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundDocumentTableViewCell.xib; sourceTree = "<group>"; };
+		763E136D22659039005D9DAA /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
+		763E136F2265A93D005D9DAA /* UploadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadOperation.swift; sourceTree = "<group>"; };
+		763EE11E226062BC00BF6921 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		763EE1202260646200BF6921 /* BeneficiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryModel.swift; sourceTree = "<group>"; };
 		76525488224D46EE00849401 /* TrackingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailViewController.swift; sourceTree = "<group>"; };
 		76525489224D46EE00849401 /* TrackingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingDetailViewController.xib; sourceTree = "<group>"; };
 		7652548C224D46FF00849401 /* HistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +231,8 @@
 				76DA4BB92240AE550065174B /* ProfileEditTableViewCell.xib */,
 				76A1BAF42241768B003C9BFA /* RefundRequestTableViewCell.swift */,
 				76A1BAF52241768B003C9BFA /* RefundRequestTableViewCell.xib */,
+				763E1369226582A7005D9DAA /* RefundDocumentTableViewCell.swift */,
+				763E136A226582A7005D9DAA /* RefundDocumentTableViewCell.xib */,
 				76A1BAF822419598003C9BFA /* RefundTextTableViewCell.swift */,
 				76A1BAF922419598003C9BFA /* RefundTextTableViewCell.xib */,
 				76A1BB082241EC3A003C9BFA /* TransactionTableViewCell.swift */,
@@ -263,10 +277,14 @@
 			isa = PBXGroup;
 			children = (
 				76E77475225700780017F10E /* FetchOperation.swift */,
+				763E136F2265A93D005D9DAA /* UploadOperation.swift */,
 				76E77476225700780017F10E /* SessionModel.swift */,
 				76E77483225AE6CB0017F10E /* BenefitRulesModel.swift */,
 				76E77487225AE7B60017F10E /* BenefitModel.swift */,
 				76E77485225AE7370017F10E /* DocumentModel.swift */,
+				763EE11E226062BC00BF6921 /* UserModel.swift */,
+				763EE1202260646200BF6921 /* BeneficiaryModel.swift */,
+				763E136D22659039005D9DAA /* PriceFormatter.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -383,6 +401,7 @@
 				763445C2225515D300915BC7 /* TrackingTableViewCell.xib in Resources */,
 				7652548B224D46EE00849401 /* TrackingDetailViewController.xib in Resources */,
 				76DA4BB72240ACC90065174B /* RefundProfileEditViewController.xib in Resources */,
+				763E136C226582A7005D9DAA /* RefundDocumentTableViewCell.xib in Resources */,
 				7606E6FF2239817A00C24D9E /* Assets.xcassets in Resources */,
 				7606E70D223985B000C24D9E /* LoginViewController.xib in Resources */,
 			);
@@ -451,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76DA4BBF2240C3C10065174B /* UIView.swift in Sources */,
+				763E136B226582A7005D9DAA /* RefundDocumentTableViewCell.swift in Sources */,
 				76E7746F225700120017F10E /* HTTPClient.swift in Sources */,
 				76DA4BBA2240AE550065174B /* ProfileEditTableViewCell.swift in Sources */,
 				7606E716223A0E1700C24D9E /* RefundsViewController.swift in Sources */,
@@ -458,14 +478,17 @@
 				76E7747A225700F20017F10E /* APIClient.swift in Sources */,
 				76A1BAFA22419598003C9BFA /* RefundTextTableViewCell.swift in Sources */,
 				7606E721223A0E9500C24D9E /* NavigationController.swift in Sources */,
+				763EE11F226062BC00BF6921 /* UserModel.swift in Sources */,
 				76A1BB0A2241EC3A003C9BFA /* TransactionTableViewCell.swift in Sources */,
 				76DA4BB62240ACC90065174B /* RefundProfileEditViewController.swift in Sources */,
 				76A1BAF62241768B003C9BFA /* RefundRequestTableViewCell.swift in Sources */,
 				76E77484225AE6CC0017F10E /* BenefitRulesModel.swift in Sources */,
+				763E136E22659039005D9DAA /* PriceFormatter.swift in Sources */,
 				76A1BAFE2241E006003C9BFA /* SegmentedViewController.swift in Sources */,
 				76E77486225AE7370017F10E /* DocumentModel.swift in Sources */,
 				7606E70C223985B000C24D9E /* LoginViewController.swift in Sources */,
 				7652548A224D46EE00849401 /* TrackingDetailViewController.swift in Sources */,
+				763E13702265A93D005D9DAA /* UploadOperation.swift in Sources */,
 				76E7747E225ACFEB0017F10E /* StringProtocol.swift in Sources */,
 				763445C1225515D300915BC7 /* TrackingTableViewCell.swift in Sources */,
 				76A1BB062241E0D0003C9BFA /* TransactionsTrackingViewController.swift in Sources */,
@@ -480,6 +503,7 @@
 				763445BE225483EF00915BC7 /* StatusIndicatorView.swift in Sources */,
 				76E77482225ADC3C0017F10E /* SplashViewController.swift in Sources */,
 				7606E6F82239817700C24D9E /* AppDelegate.swift in Sources */,
+				763EE1212260646200BF6921 /* BeneficiaryModel.swift in Sources */,
 				7652548E224D46FF00849401 /* HistoryDetailViewController.swift in Sources */,
 				76E77488225AE7B60017F10E /* BenefitModel.swift in Sources */,
 				76E77478225700780017F10E /* SessionModel.swift in Sources */,

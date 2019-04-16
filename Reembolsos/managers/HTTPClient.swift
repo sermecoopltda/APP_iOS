@@ -23,12 +23,16 @@ public enum HTTPContentType {
     case json
     case formURLEncoded
     case plainText
+    case html
+    case data
 
     var headerValue: String {
         switch self {
         case .json: return "application/json"
         case .formURLEncoded: return "application/x-www-form-urlencoded"
         case .plainText: return "text/plain"
+        case .html: return "text/html"
+        case .data: return "application/data"
         }
     }
 
@@ -43,7 +47,7 @@ public enum HTTPContentType {
                 return nil
             }
 
-        case .formURLEncoded, .plainText:
+        case .formURLEncoded, .plainText, .html:
             var URLComponents = Foundation.URLComponents()
             URLComponents.queryItems = parameters.map {
                 (key, value) in
@@ -51,7 +55,10 @@ public enum HTTPContentType {
             }
             let data = URLComponents.query?.data(using: String.Encoding.ascii)
             return data
+
+        default: return nil
         }
+
     }
 }
 
@@ -119,25 +126,31 @@ open class HTTPClient {
         operation.completionHandler = {
             (data: Data?, response: HTTPURLResponse?, error: Error?) in
             DispatchQueue.main.async(execute: {
-                if let data = data, error == nil {
-                    if let contentType = response?.allHeaderFields["Content-Type"] as? String, contentType.localizedLowercase.hasPrefix(HTTPContentType.plainText.headerValue.localizedLowercase) {
-                        // we are plain text
-                        let string = String(data: data, encoding: .utf8)
-                        completionHandler(string != nil, response, string)
-                    } else {
-                        // we are json encoded (hopefully)
-                        do {
-                            let json = try JSONSerialization.jsonObject(with: data, options: []) // as? APIClientResponseJSON
-                            // we are either a JSON root object or an array
-                            if json is HTTPClientResponseJSON || json is [HTTPClientResponseJSON] {
+                if let data = data, let response = response, error == nil {
+                    switch response.statusCode {
+                    case 401:
+                        // unauthorized
+                        completionHandler(false, response, nil)
+                        break
+
+                    default:
+                        if data.count == 0 {
+                            completionHandler(true, response, "")
+                            return
+                        }
+                        if let contentType = response.allHeaderFields["Content-Type"] as? String,
+                            (contentType.localizedLowercase.hasPrefix(HTTPContentType.plainText.headerValue.localizedLowercase) ||
+                                contentType.localizedLowercase.hasPrefix(HTTPContentType.html.headerValue.localizedLowercase)) {
+                            // we are plain text
+                            let string = String(data: data, encoding: .utf8)
+                            completionHandler(string != nil, response, string)
+                        } else {
+                            // we are json encoded (hopefully)
+                            if let json = self.parseJSON(data: data) {
                                 completionHandler(true, response, json)
                             } else {
                                 completionHandler(false, response, nil)
                             }
-                        } catch let JSONError as NSError {
-                            let responseString = String(data: data, encoding: .utf8)
-                            NSLog("JSON Deserialization error: \(JSONError); response: \(String(describing: responseString))")
-                            completionHandler(false, response, nil)
                         }
                     }
                 } else {
@@ -147,5 +160,55 @@ open class HTTPClient {
             })
         }
         operationQueue.addOperation(operation)
+    }
+
+    public func performUpload(URL: Foundation.URL, data: Data, method: HTTPMethod, headers: [String: String]? = nil, completionHandler: @escaping HTTPClientCompletionHandler) {
+        guard let session = session else {
+            completionHandler(false, nil, nil)
+            return
+        }
+        let request = self.request(URL: URL, method: method, contentType: .data, parameters: nil, headers: headers)
+        let operation = UploadOperation(session: session, request: request, data: data)
+        operation.completionHandler = {
+            (data: Data?, response: HTTPURLResponse?, error: Error?) in
+            DispatchQueue.main.async {
+                if let data = data, let response = response, error == nil {
+                    if let contentType = response.allHeaderFields["Content-Type"] as? String,
+                        (contentType.localizedLowercase.hasPrefix(HTTPContentType.plainText.headerValue.localizedLowercase) ||
+                            contentType.localizedLowercase.hasPrefix(HTTPContentType.html.headerValue.localizedLowercase)) {
+                        // we are plain text
+                        let string = String(data: data, encoding: .utf8)
+                        completionHandler(string != nil, response, string)
+                    } else {
+                        // we are json encoded (hopefully)
+                        if let json = self.parseJSON(data: data) {
+                            completionHandler(true, response, json)
+                        } else {
+                            completionHandler(false, response, nil)
+                        }
+                    }
+                } else {
+                    NSLog("upload error: \(String(describing: error))")
+                    completionHandler(false, response, nil)
+                }
+            }
+        }
+        operationQueue.addOperation(operation)
+    }
+
+    private func parseJSON(data: Data) -> Any? {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: []) // as? APIClientResponseJSON
+            // we are either a JSON root object or an array
+            if json is HTTPClientResponseJSON || json is [HTTPClientResponseJSON] {
+                return json
+            } else {
+                return nil
+            }
+        } catch let JSONError as NSError {
+            let responseString = String(data: data, encoding: .utf8)
+            NSLog("JSON Deserialization error: \(JSONError); response: \(String(describing: responseString))")
+            return nil
+        }
     }
 }

@@ -13,6 +13,8 @@ class RefundTermsViewController: UIViewController {
     private var webView: WKWebView!
     private let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
 
+    private var benefitRules: BenefitRulesModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Términos de Uso"
@@ -40,6 +42,7 @@ class RefundTermsViewController: UIViewController {
         activityIndicator.startAnimating()
         APIClient.shared.benefitRules(completionHandler: {
             (success: Bool, benefitRules: BenefitRulesModel?) in
+            self.benefitRules = benefitRules
             if success, let benefitRules = benefitRules {
                 let rulesHTML = benefitRules.policyParagraphs.map {
                     return "<li>\($0)</li>\n"
@@ -75,6 +78,7 @@ class RefundTermsViewController: UIViewController {
 
     @objc func accept(_ sender: Any) {
         let controller = RefundProfileEditViewController()
+        controller.benefitRules = benefitRules
         navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -10,12 +10,13 @@ import UIKit
 
 private protocol RefundProfileEditTableViewSectionEnum {
     var title: String? { get }
-    var defaultValue: String? { get }
+//    var defaultValue: String? { get }
 }
 
-extension RefundProfileEditTableViewSectionEnum {
-    var defaultValue: String? { return nil }
-}
+//
+//extension RefundProfileEditTableViewSectionEnum {
+//    var defaultValue: String? { return nil }
+//}
 
 private enum RefundProfileEditTableViewSection: Int {
     case editable
@@ -68,46 +69,35 @@ private enum RefundProfileEditTableViewEditableSectionRow: Int, RefundProfileEdi
         default: return nil
         }
     }
-
-    var defaultValue: String? {
-        switch self {
-        case .name: return "Juan Pérez"
-        case .phoneNumber: return "987654321"
-        case .email: return "juan.perez@hotmail.com"
-        default: return nil
-        }
-    }
-
 }
 
 private enum RefundProfileEditTableViewNoneditableSectionRow: Int, RefundProfileEditTableViewSectionEnum {
-    case bankingProduct
+//    case bankingProduct
     case accountNumber
     case bankName
     case count
 
     init(_ rawValue: Int) {
-        self = RefundProfileEditTableViewNoneditableSectionRow(rawValue: rawValue) ?? .bankingProduct
+        self = RefundProfileEditTableViewNoneditableSectionRow(rawValue: rawValue) ?? .accountNumber
     }
 
     var title: String? {
         switch self {
-        case .bankingProduct: return "Producto"
+//        case .bankingProduct: return "Producto"
         case .accountNumber: return "Nº de Cuenta"
         case .bankName: return "Banco"
         default: return nil
         }
     }
 
-    var defaultValue: String? {
-        switch self {
-        case .bankingProduct: return "Cuenta Corriente"
-        case .accountNumber: return "0987654321"
-        case .bankName: return "De La Plaza"
-        default: return nil
-        }
-    }
-
+//    var defaultValue: String? {
+//        switch self {
+//        case .bankingProduct: return "Cuenta Corriente"
+//        case .accountNumber: return "0987654321"
+//        case .bankName: return "De La Plaza"
+//        default: return nil
+//        }
+//    }
 }
 
 class RefundProfileEditViewController: UIViewController {
@@ -119,25 +109,43 @@ class RefundProfileEditViewController: UIViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var phoneTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var defaultTextField: UITextField!
+    @IBOutlet var bankTextField: UITextField!
+    @IBOutlet var accountTextField: UITextField!
     @IBOutlet var callButton: UIButton!
     @IBOutlet var tableFooterView: UIView!
 
+    fileprivate var user: UserModel? {
+        didSet {
+            if !isViewLoaded { return }
+            nameTextField.text = user?.name
+            emailTextField.text = user?.email
+            phoneTextField.text = user?.phoneNumber
+            bankTextField.text = user?.bankName
+            accountTextField.text = user?.bankAccount
+
+            self.conditionallyEnableNextButton()
+            // tableView.reloadData()
+        }
+    }
+
     fileprivate var textfields: [IndexPath: UITextField] = [:]
+    var benefitRules: BenefitRulesModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Confirmar Datos"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .done, target: self, action: #selector(RefundProfileEditViewController.next(_:)))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tableView.register(UINib(nibName: String(describing: ProfileEditTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.cellIdentifier)
         tableView.tableFooterView = tableFooterView
         NotificationCenter.default.addObserver(self, selector: #selector(RefundProfileEditViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RefundProfileEditViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RefundProfileEditViewController.textFieldTextDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
         callButton.layer.cornerRadius = callButton.bounds.size.height / 2
         callButton.layer.borderWidth = 2
         callButton.layer.borderColor = UIColor(hex: "#333333").cgColor
-        // NotificationCenter.default.addObserver(self, selector: #selector(RefundProfileEditViewController.textFieldTextDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
+
+        refreshProfile()
+        conditionallyEnableNextButton()
     }
 
     override func viewDidLayoutSubviews() {
@@ -151,6 +159,25 @@ class RefundProfileEditViewController: UIViewController {
         }
     }
 
+    private func refreshProfile() {
+        let activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        APIClient.shared.profile(completionHandler: {
+            (success: Bool, user: UserModel?) in
+            activityIndicator.stopAnimating()
+            if success, let user = user {
+                self.navigationItem.rightBarButtonItem = nil
+                self.user = user
+            } else {
+                let controller = UIAlertController(title: "Error Obteniendo Datos", message: "Ocurrió un error al obtener los datos del usuario. Por favor revisa tus ajustes de red e intenta nuevamente.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+                controller.addAction(okAction)
+                self.present(controller, animated: true, completion: nil)
+            }
+        })
+    }
+
     fileprivate func textField(for indexPath: IndexPath) -> UITextField? {
         switch RefundProfileEditTableViewSection(indexPath.section) {
         case .editable:
@@ -162,23 +189,52 @@ class RefundProfileEditViewController: UIViewController {
             }
 
         case .noneditable:
-            if let textField = textfields[indexPath] {
-                return textField
+            switch RefundProfileEditTableViewNoneditableSectionRow(indexPath.row) {
+            case .bankName: return bankTextField
+            case .accountNumber: return accountTextField
+            default: return nil
             }
-            let textField = defaultTextField.copyView() as! UITextField
-            textfields[indexPath] = textField
-            return textField
-
         default: return nil
         }
+    }
 
+    fileprivate func conditionallyEnableNextButton() {
+        let textFields: [UITextField] = [nameTextField, phoneTextField, emailTextField]
+        for textField in textFields {
+            guard let text = textField.text, text.count > 0 else {
+                navigationItem.rightBarButtonItem = nil
+                return
+            }
+        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .done, target: self, action: #selector(RefundProfileEditViewController.next(_:)))
     }
 
     // MARK: Control Actions
 
     @objc func next(_ sender: Any) {
-        let controller = RefundRequestViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        view.endEditing(true)
+        tableView.isUserInteractionEnabled = false
+        navigationItem.hidesBackButton = true
+        let activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        APIClient.shared.updateProfile(name: nameTextField.text, phoneNumber: phoneTextField.text, email: emailTextField.text, completionHandler: {
+            (success: Bool) in
+            if success {
+                let controller = RefundRequestViewController()
+                controller.benefitRules = self.benefitRules
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                let controller = UIAlertController(title: "Error Guardando Datos", message: "Ocurrió un error al almacenar los datos del usuario. Por favor revisa tus ajustes de red e intenta nuevamente.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+                controller.addAction(okAction)
+                self.present(controller, animated: true, completion: {
+                    self.navigationItem.hidesBackButton = false
+                    self.tableView.isUserInteractionEnabled = true
+                    self.conditionallyEnableNextButton()
+                })
+            }
+        })
     }
 
     // MARK: Notification Handlers
@@ -221,6 +277,11 @@ class RefundProfileEditViewController: UIViewController {
         },
                        completion: nil)
     }
+
+    @objc func textFieldTextDidChange(_ notification: Notification) {
+        NSLog("textFieldTextDidChange")
+        conditionallyEnableNextButton()
+    }
 }
 
 // MARK: - <UITableViewDataSource> Methods
@@ -240,7 +301,6 @@ extension RefundProfileEditViewController: UITableViewDataSource {
         let row = section.row(indexPath.row)
         cell.titleLabel.text = row.title
         cell.textField = textField(for: indexPath)
-        cell.textField?.text = row.defaultValue
         cell.isEditable = section == .editable
         return cell
     }

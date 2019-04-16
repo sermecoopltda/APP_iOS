@@ -17,8 +17,9 @@ class RefundTextTableViewCell: UITableViewCell {
             guard let textView = textView else {
                 return
             }
-            containerView.addSubview(textView)
+            textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             textView.frame = containerView.bounds
+            containerView.addSubview(textView)
         }
     }
 

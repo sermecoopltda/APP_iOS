@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RefundProfileEditViewController" customModule="Reembolsos" customModuleProvider="target">
             <connections>
+                <outlet property="accountTextField" destination="OAo-di-c1f" id="ctQ-GN-zgJ"/>
+                <outlet property="bankTextField" destination="jRB-O8-bSw" id="snJ-NE-fsT"/>
                 <outlet property="callButton" destination="ffj-h3-WlK" id="1EM-Si-AEo"/>
-                <outlet property="defaultTextField" destination="kpq-mZ-rj1" id="9Zd-2Q-a5X"/>
                 <outlet property="emailTextField" destination="3Ek-hk-Xvn" id="5lm-Yi-Q6j"/>
                 <outlet property="nameTextField" destination="Mmv-Sd-GOu" id="w6i-WW-E89"/>
                 <outlet property="phoneTextField" destination="TeR-pH-JYy" id="F7m-Zy-ip2"/>
@@ -53,6 +54,22 @@
             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="name"/>
             <point key="canvasLocation" x="-225" y="-391"/>
         </textField>
+        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="jRB-O8-bSw">
+            <rect key="frame" x="0.0" y="0.0" width="97" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <nil key="textColor"/>
+            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="name"/>
+            <point key="canvasLocation" x="-225" y="-391"/>
+        </textField>
+        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="OAo-di-c1f">
+            <rect key="frame" x="0.0" y="0.0" width="97" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <nil key="textColor"/>
+            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="name"/>
+            <point key="canvasLocation" x="-225" y="-391"/>
+        </textField>
         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="3Ek-hk-Xvn">
             <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -69,20 +86,12 @@
             <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
             <point key="canvasLocation" x="-530" y="13"/>
         </textField>
-        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="kpq-mZ-rj1">
-            <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-            <nil key="textColor"/>
-            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="name"/>
-            <point key="canvasLocation" x="-530" y="13"/>
-        </textField>
         <view contentMode="scaleToFill" id="hfx-9g-6Ao">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para modificar los datos de tu cuenta bancaria debes comunicarte con nuestro Call Center" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORI-Og-5uz" userLabel="Disclaimer Label">
-                    <rect key="frame" x="15" y="10" width="345" height="553"/>
+                    <rect key="frame" x="15" y="10" width="345" height="545"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Vks-Jx-Izn"/>
@@ -93,10 +102,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffj-h3-WlK">
-                    <rect key="frame" x="40" y="583" width="295" height="44"/>
+                    <rect key="frame" x="40" y="575" width="295" height="52"/>
                     <color key="backgroundColor" red="0.81176470588235294" green="0.81176470588235294" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="FyS-ri-xwc"/>
+                        <constraint firstAttribute="height" constant="52" id="FyS-ri-xwc"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                     <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
