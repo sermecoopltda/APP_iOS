@@ -31,6 +31,8 @@ public class APIClient: HTTPClient {
                 return
             }
             newHeaders["Authorization"] = currentUser.token
+
+            NSLog("** endpoint: \(endpointURL.absoluteString); Authorization: \(currentUser.token)")
         }
         performCall(URL: endpointURL, method: method, contentType: contentType, parameters: parameters, headers: newHeaders, completionHandler: completionHandler)
     }
@@ -203,9 +205,48 @@ public class APIClient: HTTPClient {
                         if success, let json = json as? HTTPClientResponseJSON, let uploadedURL = json["url"] as? String {
                             completionHandler?(true, URL(string: uploadedURL))
                         } else {
-                            NSLog("uploadPicture API call failed; response: \(response); json: \(json)")
+                            NSLog("uploadPicture API call failed")
                             completionHandler?(false, nil)
                         }
         })
+    }
+
+    public func tracking(month: Int, year: Int, completionHandler: ((Bool, [TrackingModel]) -> ())?) {
+        let path = "reembolsos.php"
+
+        let calendar = Calendar.current
+        let fromComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month, day: 1)
+        let toComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month + 1, day: 0)
+        guard let fromDate = calendar.date(from: fromComponents), let toDate = calendar.date(from: toComponents) else {
+            completionHandler?(false, [])
+            return
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let parameters: HTTPClientParameters = [
+            "desde": dateFormatter.string(from: fromDate),
+            "hasta": dateFormatter.string(from: toDate)
+        ]
+
+        performCall(authenticated: true,
+                    method: .GET,
+                    path: path,
+                    parameters: parameters,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        if success, let json = json as? [HTTPClientResponseJSON] {
+                            do {
+                                let trackingEvents: [TrackingModel] = try unbox(dictionaries: json)
+                                completionHandler?(true, trackingEvents)
+                            } catch let error {
+                                NSLog("tracking(month, year) API call failed; unbox error: \(error)")
+                                completionHandler?(false, [])
+                            }
+                        } else {
+                            NSLog("tracking(month, year) API call failed")
+                            completionHandler?(false, [])
+                        }
+            })
     }
 }

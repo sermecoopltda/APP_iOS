@@ -25,4 +25,8 @@ public struct PriceFormatter {
     static func string(from number: Int) -> String {
         return numberFormatter.string(from: number as NSNumber)!
     }
+
+    static func number(from numberString: String) -> Int {
+        return Int(numberString.replacingOccurrences(of: ".", with: "")) ?? 0
+    }
 }

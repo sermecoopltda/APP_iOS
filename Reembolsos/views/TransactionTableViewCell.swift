@@ -20,14 +20,14 @@ class TransactionTableViewCell: UITableViewCell {
         }
     }
 
-    var transaction: TransactionModel? {
-        didSet {
-            titleLabel.text = transaction?.title
-            subtitleLabel.text = transaction?.subtitle
-            dateLabel.text = transaction?.date
-            statusIndicator.backgroundColor = transaction?.statusColor
-        }
-    }
+//    var transaction: TransactionModel? {
+//        didSet {
+//            titleLabel.text = transaction?.title
+//            subtitleLabel.text = transaction?.subtitle
+//            dateLabel.text = transaction?.date
+//            statusIndicator.backgroundColor = transaction?.statusColor
+//        }
+//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

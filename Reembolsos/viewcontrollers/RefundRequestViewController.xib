@@ -54,6 +54,9 @@
             <nil key="textColor"/>
             <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
             <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+            <connections>
+                <outlet property="delegate" destination="-1" id="7jy-IO-cs1"/>
+            </connections>
             <point key="canvasLocation" x="-169" y="-324"/>
         </textField>
         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="cG7-hC-jrq">

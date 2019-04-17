@@ -133,7 +133,7 @@ class RefundProfileEditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Confirmar Datos"
+        navigationItem.title = "Actualizar Datos"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tableView.register(UINib(nibName: String(describing: ProfileEditTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.cellIdentifier)
         tableView.tableFooterView = tableFooterView
@@ -220,6 +220,9 @@ class RefundProfileEditViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         APIClient.shared.updateProfile(name: nameTextField.text, phoneNumber: phoneTextField.text, email: emailTextField.text, completionHandler: {
             (success: Bool) in
+            self.navigationItem.hidesBackButton = false
+            self.tableView.isUserInteractionEnabled = true
+            self.conditionallyEnableNextButton()
             if success {
                 let controller = RefundRequestViewController()
                 controller.benefitRules = self.benefitRules
@@ -228,13 +231,16 @@ class RefundProfileEditViewController: UIViewController {
                 let controller = UIAlertController(title: "Error Guardando Datos", message: "Ocurrió un error al almacenar los datos del usuario. Por favor revisa tus ajustes de red e intenta nuevamente.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
                 controller.addAction(okAction)
-                self.present(controller, animated: true, completion: {
-                    self.navigationItem.hidesBackButton = false
-                    self.tableView.isUserInteractionEnabled = true
-                    self.conditionallyEnableNextButton()
-                })
+                self.present(controller, animated: true, completion: nil)
             }
         })
+    }
+
+    @IBAction func callButtonTouched(_ sender: Any) {
+        let callURL = URL(string: "tel:6006558000")!
+        if UIApplication.shared.canOpenURL(callURL) {
+            UIApplication.shared.open(callURL, options: [:], completionHandler: nil)
+        }
     }
 
     // MARK: Notification Handlers
@@ -301,7 +307,11 @@ extension RefundProfileEditViewController: UITableViewDataSource {
         let row = section.row(indexPath.row)
         cell.titleLabel.text = row.title
         cell.textField = textField(for: indexPath)
-        cell.isEditable = section == .editable
+        if indexPath.section == RefundProfileEditTableViewSection.editable.rawValue && indexPath.row == RefundProfileEditTableViewEditableSectionRow.name.rawValue {
+            cell.isEditable = false
+        } else {
+            cell.isEditable = section == .editable
+        }
         return cell
     }
 

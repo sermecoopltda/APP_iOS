@@ -8,12 +8,12 @@
 
 import UIKit
 
-public struct TransactionModel {
-    let title: String
-    let subtitle: String
-    let date: String
-    let statusColor: UIColor?
-}
+//public struct TransactionModel {
+//    let title: String
+//    let subtitle: String
+//    let date: String
+//    let statusColor: UIColor?
+//}
 
 class TransactionsViewController: UIViewController {
     private struct statics {
@@ -23,8 +23,9 @@ class TransactionsViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
 
     var showsStatusIndicator: Bool { return false }
+    let dateFormatter = DateFormatter()
 
-    var dataSource: [TransactionModel] = [] {
+    var dataSource: [TrackingModel] = [] {
         didSet {
             if !isViewLoaded { return }
             tableView.reloadData()
@@ -33,6 +34,7 @@ class TransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.setLocalizedDateFormatFromTemplate("dMMMHm")
         searchBar.setImage(#imageLiteral(resourceName: "search-icon-calendar"), for: .bookmark, state: .normal)
         searchBar.setImage(#imageLiteral(resourceName: "search-icon-calendar"), for: .bookmark, state: [.highlighted, .selected])
         searchBar.showsBookmarkButton = true
@@ -51,7 +53,11 @@ extension TransactionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: statics.cellIdentifier, for: indexPath) as! TransactionTableViewCell
         cell.showsStatusIndicator = showsStatusIndicator
-        cell.transaction = dataSource[indexPath.row]
+        let trackingEvent = dataSource[indexPath.row]
+        cell.titleLabel.text = trackingEvent.title
+        cell.subtitleLabel.text = "$\(PriceFormatter.string(from: trackingEvent.amount))"
+        cell.dateLabel.text = dateFormatter.string(from: trackingEvent.createdAt)
+        cell.statusIndicator.backgroundColor = UIColor(hex: "#f3f3f3")
         return cell
     }
 }

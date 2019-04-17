@@ -84,6 +84,7 @@ class RefundRequestViewController: UIViewController {
                 cell?.accessoryType = .checkmark
             }
             selectedDocuments = [:]
+            amountTextField.text = nil
             let imageSection = RefundRequestTableViewSection.images.rawValue
             let sections = IndexSet(integer: imageSection)
             tableView.reloadSections(sections, with: .none)
@@ -193,7 +194,8 @@ class RefundRequestViewController: UIViewController {
         view.endEditing(true)
         guard let user = user, let benefits = benefitRules?.benefits, benefits.count > 0, let amount = amountTextField.text else { return }
         let benefit = benefits[selectedBenefitIndex]
-        guard let amountInt = Int(amount), amountInt > 0 else {
+        let amountInt = Int(PriceFormatter.number(from: amount))
+        guard amountInt > 0 else {
             failWithError(title: "Monto Inválido", message: "El monto ingresado no es válido.", completionHandler: {
                 self.amountTextField.becomeFirstResponder()
             })
@@ -452,5 +454,14 @@ extension RefundRequestViewController: UIImagePickerControllerDelegate, UINaviga
         selectedDocuments[document.code] = originalImage // editedImage
         let sections = IndexSet(integer: RefundRequestTableViewSection.images.rawValue)
         tableView.reloadSections(sections, with: .none)
+    }
+}
+
+// MARK: - <UITextFieldDelegate> Methods
+
+extension RefundRequestViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard textField == amountTextField, let amountString = textField.text, let amount = Int(amountString) else { return }
+        textField.text = PriceFormatter.string(from: amount)
     }
 }

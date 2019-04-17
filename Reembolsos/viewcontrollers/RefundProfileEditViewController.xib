@@ -112,6 +112,9 @@
                     <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
                     <state key="normal" title="600 655 8000" image="profile-call-icon"/>
+                    <connections>
+                        <action selector="callButtonTouched:" destination="-1" eventType="touchUpInside" id="9qR-YA-Tge"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
