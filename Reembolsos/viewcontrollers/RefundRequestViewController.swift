@@ -25,6 +25,7 @@ private enum RefundRequestTableViewSection: Int {
         switch self {
         case .beneficiary: return "Beneficiario"
         case .benefit: return "Tipo de Prestación"
+        case .images: return "Documentos"
         case .notes: return "Observaciones"
         default: return nil
         }
@@ -339,7 +340,6 @@ extension RefundRequestViewController: UITableViewDataSource {
             let benefit = benefitRules?.benefits[selectedBenefitIndex]
             let document = benefit?.documents[indexPath.row]
             cell.titleLabel.text = document?.name
-            cell.actionText = "Seleccionar…"
             if let documentCode = document?.code {
                 cell.documentImage = selectedDocuments[documentCode]
             } else {

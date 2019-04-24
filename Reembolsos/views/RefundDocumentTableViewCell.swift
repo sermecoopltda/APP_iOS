@@ -10,20 +10,14 @@ import UIKit
 
 class RefundDocumentTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var actionLabel: UILabel!
+    @IBOutlet var iconImageView: UIImageView!
     @IBOutlet var documentContainerView: UIView!
     @IBOutlet var documentImageView: UIImageView!
     @IBOutlet var documentHeightConstraint: NSLayoutConstraint!
 
-    var actionText: String? {
+    var showsIcon: Bool = true {
         didSet {
-            guard let actionText = actionText else {
-                actionLabel.attributedText = nil
-                return
-            }
-            let attributes: [NSAttributedString.Key: Any] = [.font: actionLabel.font, .foregroundColor: actionLabel.textColor, .underlineStyle: NSUnderlineStyle.single.rawValue]
-            let attributedString = NSAttributedString(string: actionText, attributes: attributes)
-            actionLabel.attributedText = attributedString
+            iconImageView.isHidden = !showsIcon
         }
     }
 
@@ -43,13 +37,16 @@ class RefundDocumentTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.text = nil
-        actionText = nil
+        showsIcon = true 
+        iconImageView.tintColor = UIColor(hex: "#0061ff")
+        documentImage = nil
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = nil
-        actionText = nil
+        showsIcon = true
+        documentImage = nil
         accessoryType = .none
     }
 }

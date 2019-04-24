@@ -20,7 +20,7 @@ class CalendarMonthViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var separatorHeightConstraint: NSLayoutConstraint!
 
-    var trackingEvents: [TrackingModel] = []
+    var trackingEvents: [TransactionModel] = []
 
     private(set) var selectedDate: Date? {
         set {
@@ -80,19 +80,15 @@ class CalendarMonthViewController: UIViewController {
         return weekday
     }
 
-    convenience init(initialDate date: Date, selectsDay: Bool = true) {
-        NSLog("CalendarMonthViewController initialDate: \(date); selectsDay: \(selectsDay)")
+    convenience init(initialDate date: Date) {
         self.init(nibName: nil, bundle: nil)
         selectedDate = date
-        if !selectsDay {
-            selectedDay = 0
-        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: String(describing: CalendarCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: statics.cellIdentifier)
-        collectionView.allowsSelection = false
+        collectionView.allowsSelection = true
         collectionView.allowsMultipleSelection = false
         separatorHeightConstraint.constant = 1 / UIScreen.main.nativeScale
 
@@ -117,7 +113,7 @@ class CalendarMonthViewController: UIViewController {
         }
 
         APIClient.shared.tracking(month: selectedMonth, year: selectedYear, completionHandler: {
-            (success: Bool, trackingEvents: [TrackingModel]) in
+            (success: Bool, trackingEvents: [TransactionModel]) in
             if success {
                 let calendar = Calendar.current
                 self.trackingEvents = trackingEvents
@@ -176,10 +172,24 @@ extension CalendarMonthViewController: UICollectionViewDelegate {
         return selectableDays.contains(day)
     }
 
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedDay = max(0, indexPath.item + 1 - weekdayForFirstDayOfMonth)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let desiredDay = max(0, indexPath.item + 1 - weekdayForFirstDayOfMonth)
+        if selectedDay == desiredDay {
+            selectedDay = 0
+            collectionView.deselectItem(at: indexPath, animated: false)
+        } else {
+            selectedDay = desiredDay
+        }
+        guard let selectedDate = selectedDate else { return }
+        let calendar = Calendar.current
+        selectionHandler?(trackingEvents.filter {
+            if selectedDay == 0 { return true }
+            return calendar.isDate($0.createdAt, inSameDayAs: selectedDate)
+        }, selectedDate)
 //        selectionHandler?(selectedDate)
-//    }
+//        let isSelected = collectionView.cellForItem(at: indexPath)?.isSelected ?? false
+//        NSLog("selectedDay: \(selectedDay); isSelected: \(isSelected)")
+    }
 }
 
 extension CalendarMonthViewController: UICollectionViewDelegateFlowLayout {

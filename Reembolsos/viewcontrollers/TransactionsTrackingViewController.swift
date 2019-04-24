@@ -18,6 +18,9 @@ class TransactionsTrackingViewController: TransactionsViewController {
 
     private var date: Date?
 
+    fileprivate var retrievedTransactions: [TransactionModel] = []
+    fileprivate var cachedResults: [String: [TransactionModel]] = [:]
+
     override var showsStatusIndicator: Bool { return true }
 
     override func viewDidLoad() {
@@ -25,13 +28,6 @@ class TransactionsTrackingViewController: TransactionsViewController {
         refreshControl.addTarget(self, action: #selector(TransactionsTrackingViewController.refreshControlValueChanged(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
         refreshData()
-//        dataSource = [
-//            TransactionModel(title: "Juan Pérez", subtitle: "$25.000", date: "Hoy", statusColor: UIColor(hex: "#f3f3f3")),
-//            TransactionModel(title: "María González", subtitle: "$12.000", date: "Ayer", statusColor: UIColor(hex: "#ffd966")),
-//            TransactionModel(title: "Benjamín Pérez González", subtitle: "$32.500", date: "22 de Febrero", statusColor: UIColor(hex: "#cc0000")),
-//            TransactionModel(title: "Teresa Pérez González", subtitle: "$10.000", date: "16 de Enero", statusColor: UIColor(hex: "#009e10")),
-//            TransactionModel(title: "Juan Pérez", subtitle: "$27.000", date: "22/12/2018", statusColor: UIColor(hex: "#009e10"))
-//        ]
     }
 
     private func refreshData() {
@@ -44,7 +40,7 @@ class TransactionsTrackingViewController: TransactionsViewController {
         let month = calendar.component(.month, from: date)
         refreshControl.beginRefreshing()
         APIClient.shared.tracking(month: month, year: year, completionHandler: {
-            (success: Bool, trackingEvents: [TrackingModel]) in
+            (success: Bool, trackingEvents: [TransactionModel]) in
             if success {
                 self.dataSource = trackingEvents
             }
@@ -61,21 +57,43 @@ class TransactionsTrackingViewController: TransactionsViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
-        let controller = TrackingDetailViewController()
+        let transaction = dataSource[indexPath.row]
+        let controller = TransactionDetailViewController()
+        controller.identifier = transaction.identifier
         navigationController?.pushViewController(controller, animated: true)
     }
 
     override func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         let controller = CalendarViewController()
         controller.dismissHandler = {
-            (trackingEvents: [TrackingModel], date: Date?) in
+            (trackingEvents: [TransactionModel], date: Date?) in
             self.dataSource = trackingEvents
+            self.retrievedTransactions = trackingEvents
             if let date = date {
                 self.date = date 
             }
         }
         let navController = NavigationController(rootViewController: controller)
         present(navController, animated: true, completion: nil)
+    }
+
+    override func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        super.searchBarTextDidEndEditing(searchBar)
+        guard let searchText = searchBar.text, searchText.count > 0 else {
+            dataSource = retrievedTransactions
+            return
+        }
+        if let cachedTransactions = cachedResults[searchText.localizedLowercase] {
+            dataSource = cachedTransactions
+            return
+        }
+        APIClient.shared.tracking(identifier: searchText, completionHandler: {
+            (success: Bool, transactions: [TransactionModel]) in
+            if success {
+                self.cachedResults[searchText.localizedLowercase] = transactions
+                self.dataSource = transactions
+            }
+        })
     }
 
 }

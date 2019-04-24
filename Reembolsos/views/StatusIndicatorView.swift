@@ -60,7 +60,7 @@ class StatusIndicatorView: UIView {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: statics.largeCircleDiameter + 30)
+        return CGSize(width: UIView.noIntrinsicMetric, height: statics.largeCircleDiameter + 120)
     }
 
     override func draw(_ rect: CGRect) {
@@ -142,6 +142,7 @@ class StatusIndicatorView: UIView {
         if let title = title(for: .ended) {
             attributes[.foregroundColor] = currentState == .ended ? darkColor : lightColor
             let title3Rect = CGRect(x: bounds.size.width / 3 * 2, y: statics.largeCircleDiameter, width: bounds.size.width / 3, height: bounds.size.height - statics.largeCircleDiameter).insetBy(dx: 5, dy: 5)
+            NSLog("title3Rect: \(title3Rect)")
             let attributedTitle = NSAttributedString(string: title, attributes: attributes)
             attributedTitle.draw(with: title3Rect, options: [.truncatesLastVisibleLine, .usesLineFragmentOrigin], context: nil)
         }

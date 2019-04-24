@@ -12,9 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsViewController" customModule="Reembolsos" customModuleProvider="target">
             <connections>
+                <outlet property="emptyStateImageView" destination="xUb-zO-i7u" id="0jb-Mh-F80"/>
+                <outlet property="emptyStateLabel" destination="ZRc-m6-G9z" id="H0k-cJ-6Lb"/>
+                <outlet property="emptyStateView" destination="2DZ-rT-52B" id="MLD-GA-DRB"/>
                 <outlet property="searchBar" destination="xJg-dM-ybk" id="lk0-qZ-b4X"/>
                 <outlet property="tableView" destination="44F-Qp-jD6" id="3LP-1f-1Gf"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="uxu-RZ-9bN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,7 +28,7 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="44F-Qp-jD6">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="xJg-dM-ybk">
+                    <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Folio" id="xJg-dM-ybk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -54,5 +57,42 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
+        <view contentMode="scaleToFill" id="2DZ-rT-52B">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-empty" translatesAutoresizingMaskIntoConstraints="NO" id="xUb-zO-i7u">
+                    <rect key="frame" x="150" y="296" width="75" height="75"/>
+                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="iSY-Fv-2ea"/>
+                        <constraint firstAttribute="width" constant="75" id="vXb-ka-mD7"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No existen resultados para la fecha o criterio de búsqueda especificados." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRc-m6-G9z">
+                    <rect key="frame" x="35" y="381" width="305" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="jNZ-83-CnJ"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="yHc-sP-UTe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xUb-zO-i7u" firstAttribute="centerY" secondItem="2DZ-rT-52B" secondAttribute="centerY" id="8p8-fa-ZO6"/>
+                <constraint firstItem="xUb-zO-i7u" firstAttribute="centerX" secondItem="2DZ-rT-52B" secondAttribute="centerX" id="UYp-0Z-n8J"/>
+                <constraint firstItem="ZRc-m6-G9z" firstAttribute="width" secondItem="2DZ-rT-52B" secondAttribute="width" constant="-70" id="dnm-P4-X1j"/>
+                <constraint firstItem="ZRc-m6-G9z" firstAttribute="centerX" secondItem="xUb-zO-i7u" secondAttribute="centerX" id="tek-UO-ych"/>
+                <constraint firstItem="ZRc-m6-G9z" firstAttribute="top" secondItem="xUb-zO-i7u" secondAttribute="bottom" constant="10" id="xrt-gm-oQQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="8Cd-LS-T4w"/>
+            <point key="canvasLocation" x="814" y="161"/>
+        </view>
     </objects>
+    <resources>
+        <image name="icon-empty" width="72" height="72"/>
+    </resources>
 </document>

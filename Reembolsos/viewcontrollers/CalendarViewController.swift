@@ -8,10 +8,10 @@
 
 import UIKit
 
-public typealias CalendarViewControllerSelectionHandler = (([TrackingModel], Date?) -> ())
+public typealias CalendarViewControllerSelectionHandler = (([TransactionModel], Date?) -> ())
 
 class CalendarViewController: UIPageViewController {
-    var trackingEvents: [TrackingModel] = []
+    var trackingEvents: [TransactionModel] = []
 
     var dismissHandler: CalendarViewControllerSelectionHandler?
     var date: Date? = Date()
@@ -35,7 +35,7 @@ class CalendarViewController: UIPageViewController {
 
             let controller = CalendarMonthViewController(initialDate: date)
             controller.selectionHandler = {
-                (trackingEvents: [TrackingModel], date: Date?) in
+                (trackingEvents: [TransactionModel], date: Date?) in
                 self.trackingEvents = trackingEvents
                 self.date = date
             }
@@ -60,9 +60,9 @@ extension CalendarViewController: UIPageViewControllerDataSource {
         guard let viewController = viewController as? CalendarMonthViewController, let date = viewController.selectedDate, let newDate = Calendar.current.date(byAdding: .month, value: -1, to: date) else {
             return nil
         }
-        let controller = CalendarMonthViewController(initialDate: newDate, selectsDay: false)
+        let controller = CalendarMonthViewController(initialDate: newDate)
         controller.selectionHandler = {
-            (trackingEvents: [TrackingModel], date: Date?) in
+            (trackingEvents: [TransactionModel], date: Date?) in
             self.trackingEvents = trackingEvents
             self.date = date
         }
@@ -73,9 +73,9 @@ extension CalendarViewController: UIPageViewControllerDataSource {
         guard let viewController = viewController as? CalendarMonthViewController, let date = viewController.selectedDate, let newDate = Calendar.current.date(byAdding: .month, value: 1, to: date) else {
             return nil
         }
-        let controller = CalendarMonthViewController(initialDate: newDate, selectsDay: false)
+        let controller = CalendarMonthViewController(initialDate: newDate)
         controller.selectionHandler = {
-            (trackingEvents: [TrackingModel], date: Date?) in
+            (trackingEvents: [TransactionModel], date: Date?) in
             self.trackingEvents = trackingEvents
             self.date = date 
         }

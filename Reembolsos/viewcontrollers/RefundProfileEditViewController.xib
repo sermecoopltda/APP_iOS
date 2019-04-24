@@ -70,7 +70,7 @@
             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="name"/>
             <point key="canvasLocation" x="-225" y="-391"/>
         </textField>
-        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="3Ek-hk-Xvn">
+        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Obligatorio" textAlignment="right" minimumFontSize="17" id="3Ek-hk-Xvn">
             <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <nil key="textColor"/>
@@ -78,7 +78,7 @@
             <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
             <point key="canvasLocation" x="-530" y="13"/>
         </textField>
-        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="TeR-pH-JYy">
+        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Obligatorio" textAlignment="right" minimumFontSize="17" id="TeR-pH-JYy">
             <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <nil key="textColor"/>

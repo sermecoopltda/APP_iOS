@@ -33,11 +33,11 @@
 		763E137F2266969A005D9DAA /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E137C2266969A005D9DAA /* CalendarViewController.swift */; };
 		763E13802266969A005D9DAA /* CalendarMonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763E137D2266969A005D9DAA /* CalendarMonthViewController.xib */; };
 		763E138222669972005D9DAA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E138122669972005D9DAA /* String.swift */; };
-		763E138422669F26005D9DAA /* TrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E138322669F26005D9DAA /* TrackingModel.swift */; };
+		763E138422669F26005D9DAA /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E138322669F26005D9DAA /* TransactionModel.swift */; };
 		763EE11F226062BC00BF6921 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EE11E226062BC00BF6921 /* UserModel.swift */; };
 		763EE1212260646200BF6921 /* BeneficiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763EE1202260646200BF6921 /* BeneficiaryModel.swift */; };
-		7652548A224D46EE00849401 /* TrackingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76525488224D46EE00849401 /* TrackingDetailViewController.swift */; };
-		7652548B224D46EE00849401 /* TrackingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76525489224D46EE00849401 /* TrackingDetailViewController.xib */; };
+		7652548A224D46EE00849401 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76525488224D46EE00849401 /* TransactionDetailViewController.swift */; };
+		7652548B224D46EE00849401 /* TransactionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76525489224D46EE00849401 /* TransactionDetailViewController.xib */; };
 		7652548E224D46FF00849401 /* HistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7652548C224D46FF00849401 /* HistoryDetailViewController.swift */; };
 		7652548F224D46FF00849401 /* HistoryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7652548D224D46FF00849401 /* HistoryDetailViewController.xib */; };
 		76A1BAF222412851003C9BFA /* RefundRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1BAF022412851003C9BFA /* RefundRequestViewController.swift */; };
@@ -52,6 +52,8 @@
 		76A1BB0A2241EC3A003C9BFA /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1BB082241EC3A003C9BFA /* TransactionTableViewCell.swift */; };
 		76A1BB0B2241EC3B003C9BFA /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76A1BB092241EC3A003C9BFA /* TransactionTableViewCell.xib */; };
 		76A1BB0D2241F0F5003C9BFA /* TransactionsHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */; };
+		76D72D5D2270413E0004F55E /* TransactionDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D72D5C2270413E0004F55E /* TransactionDetailModel.swift */; };
+		76D72D5F227041800004F55E /* TransactionDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D72D5E227041800004F55E /* TransactionDocumentModel.swift */; };
 		76DA4BAF2240A2950065174B /* RefundTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA4BAD2240A2950065174B /* RefundTermsViewController.swift */; };
 		76DA4BB02240A2950065174B /* RefundTermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DA4BAE2240A2950065174B /* RefundTermsViewController.xib */; };
 		76DA4BB32240A31D0065174B /* refund_terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 76DA4BB22240A31D0065174B /* refund_terms.html */; };
@@ -106,11 +108,11 @@
 		763E137C2266969A005D9DAA /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		763E137D2266969A005D9DAA /* CalendarMonthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarMonthViewController.xib; sourceTree = "<group>"; };
 		763E138122669972005D9DAA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		763E138322669F26005D9DAA /* TrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingModel.swift; sourceTree = "<group>"; };
+		763E138322669F26005D9DAA /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		763EE11E226062BC00BF6921 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		763EE1202260646200BF6921 /* BeneficiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryModel.swift; sourceTree = "<group>"; };
-		76525488224D46EE00849401 /* TrackingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailViewController.swift; sourceTree = "<group>"; };
-		76525489224D46EE00849401 /* TrackingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingDetailViewController.xib; sourceTree = "<group>"; };
+		76525488224D46EE00849401 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		76525489224D46EE00849401 /* TransactionDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionDetailViewController.xib; sourceTree = "<group>"; };
 		7652548C224D46FF00849401 /* HistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailViewController.swift; sourceTree = "<group>"; };
 		7652548D224D46FF00849401 /* HistoryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryDetailViewController.xib; sourceTree = "<group>"; };
 		76A1BAF022412851003C9BFA /* RefundRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundRequestViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,8 @@
 		76A1BB082241EC3A003C9BFA /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		76A1BB092241EC3A003C9BFA /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
 		76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsHistoryViewController.swift; sourceTree = "<group>"; };
+		76D72D5C2270413E0004F55E /* TransactionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailModel.swift; sourceTree = "<group>"; };
+		76D72D5E227041800004F55E /* TransactionDocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDocumentModel.swift; sourceTree = "<group>"; };
 		76DA4BAD2240A2950065174B /* RefundTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundTermsViewController.swift; sourceTree = "<group>"; };
 		76DA4BAE2240A2950065174B /* RefundTermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundTermsViewController.xib; sourceTree = "<group>"; };
 		76DA4BB22240A31D0065174B /* refund_terms.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = refund_terms.html; sourceTree = "<group>"; };
@@ -226,8 +230,8 @@
 				76A1BAFD2241E005003C9BFA /* SegmentedViewController.xib */,
 				76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */,
 				76A1BB042241E0D0003C9BFA /* TransactionsTrackingViewController.swift */,
-				76525488224D46EE00849401 /* TrackingDetailViewController.swift */,
-				76525489224D46EE00849401 /* TrackingDetailViewController.xib */,
+				76525488224D46EE00849401 /* TransactionDetailViewController.swift */,
+				76525489224D46EE00849401 /* TransactionDetailViewController.xib */,
 				7652548C224D46FF00849401 /* HistoryDetailViewController.swift */,
 				7652548D224D46FF00849401 /* HistoryDetailViewController.xib */,
 				76E77481225ADC3C0017F10E /* SplashViewController.swift */,
@@ -305,7 +309,9 @@
 				763EE11E226062BC00BF6921 /* UserModel.swift */,
 				763EE1202260646200BF6921 /* BeneficiaryModel.swift */,
 				763E136D22659039005D9DAA /* PriceFormatter.swift */,
-				763E138322669F26005D9DAA /* TrackingModel.swift */,
+				763E138322669F26005D9DAA /* TransactionModel.swift */,
+				76D72D5C2270413E0004F55E /* TransactionDetailModel.swift */,
+				76D72D5E227041800004F55E /* TransactionDocumentModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -422,7 +428,7 @@
 				76A1BAF322412851003C9BFA /* RefundRequestViewController.xib in Resources */,
 				763445C2225515D300915BC7 /* TrackingTableViewCell.xib in Resources */,
 				763E13802266969A005D9DAA /* CalendarMonthViewController.xib in Resources */,
-				7652548B224D46EE00849401 /* TrackingDetailViewController.xib in Resources */,
+				7652548B224D46EE00849401 /* TransactionDetailViewController.xib in Resources */,
 				76DA4BB72240ACC90065174B /* RefundProfileEditViewController.xib in Resources */,
 				763E136C226582A7005D9DAA /* RefundDocumentTableViewCell.xib in Resources */,
 				7606E6FF2239817A00C24D9E /* Assets.xcassets in Resources */,
@@ -494,7 +500,7 @@
 			files = (
 				76DA4BBF2240C3C10065174B /* UIView.swift in Sources */,
 				763E136B226582A7005D9DAA /* RefundDocumentTableViewCell.swift in Sources */,
-				763E138422669F26005D9DAA /* TrackingModel.swift in Sources */,
+				763E138422669F26005D9DAA /* TransactionModel.swift in Sources */,
 				763E138222669972005D9DAA /* String.swift in Sources */,
 				76E7746F225700120017F10E /* HTTPClient.swift in Sources */,
 				76DA4BBA2240AE550065174B /* ProfileEditTableViewCell.swift in Sources */,
@@ -512,8 +518,9 @@
 				763E136E22659039005D9DAA /* PriceFormatter.swift in Sources */,
 				76A1BAFE2241E006003C9BFA /* SegmentedViewController.swift in Sources */,
 				76E77486225AE7370017F10E /* DocumentModel.swift in Sources */,
+				76D72D5D2270413E0004F55E /* TransactionDetailModel.swift in Sources */,
 				7606E70C223985B000C24D9E /* LoginViewController.swift in Sources */,
-				7652548A224D46EE00849401 /* TrackingDetailViewController.swift in Sources */,
+				7652548A224D46EE00849401 /* TransactionDetailViewController.swift in Sources */,
 				763E13702265A93D005D9DAA /* UploadOperation.swift in Sources */,
 				76E7747E225ACFEB0017F10E /* StringProtocol.swift in Sources */,
 				763445C1225515D300915BC7 /* TrackingTableViewCell.swift in Sources */,
@@ -524,6 +531,7 @@
 				7606E71A223A0E2C00C24D9E /* TransactionsViewController.swift in Sources */,
 				76E77471225700190017F10E /* AssetsClient.swift in Sources */,
 				76E77477225700780017F10E /* FetchOperation.swift in Sources */,
+				76D72D5F227041800004F55E /* TransactionDocumentModel.swift in Sources */,
 				76A1BAF222412851003C9BFA /* RefundRequestViewController.swift in Sources */,
 				7606E713223A0A1F00C24D9E /* UIColor.swift in Sources */,
 				7606E71E223A0E3800C24D9E /* ProfileViewController.swift in Sources */,

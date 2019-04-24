@@ -211,7 +211,7 @@ public class APIClient: HTTPClient {
         })
     }
 
-    public func tracking(month: Int, year: Int, completionHandler: ((Bool, [TrackingModel]) -> ())?) {
+    public func tracking(month: Int, year: Int, completionHandler: ((Bool, [TransactionModel]) -> ())?) {
         let path = "reembolsos.php"
 
         let calendar = Calendar.current
@@ -237,7 +237,7 @@ public class APIClient: HTTPClient {
                         (success: Bool, response: HTTPURLResponse?, json: Any?) in
                         if success, let json = json as? [HTTPClientResponseJSON] {
                             do {
-                                let trackingEvents: [TrackingModel] = try unbox(dictionaries: json)
+                                let trackingEvents: [TransactionModel] = try unbox(dictionaries: json)
                                 completionHandler?(true, trackingEvents)
                             } catch let error {
                                 NSLog("tracking(month, year) API call failed; unbox error: \(error)")
@@ -248,5 +248,55 @@ public class APIClient: HTTPClient {
                             completionHandler?(false, [])
                         }
             })
+    }
+
+    public func tracking(identifier: String, completionHandler: ((Bool, [TransactionModel]) -> ())?) {
+        let path = "reembolsos.php"
+        let parameters: HTTPClientParameters = ["folio": identifier]
+
+        performCall(authenticated: true,
+                    method: .GET,
+                    path: path,
+                    parameters: parameters,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        if success, let json = json as? [HTTPClientResponseJSON] {
+                            do {
+                                let trackingEvents: [TransactionModel] = try unbox(dictionaries: json)
+                                completionHandler?(true, trackingEvents)
+                            } catch let error {
+                                NSLog("tracking(month, year) API call failed; unbox error: \(error)")
+                                completionHandler?(false, [])
+                            }
+                        } else {
+                            NSLog("tracking(month, year) API call failed")
+                            completionHandler?(false, [])
+                        }
+        })
+    }
+
+    public func transaction(identifier: String, completionHandler: ((Bool, TransactionDetailModel?) -> ())?) {
+        let path = "consultaDetalleReembolso.php"
+        let parameters: HTTPClientParameters = ["folio": identifier]
+
+        performCall(authenticated: true,
+                    method: .GET,
+                    path: path,
+                    parameters: parameters,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        if success, let json = json as? HTTPClientResponseJSON {
+                            do {
+                                let transaction: TransactionDetailModel = try unbox(dictionary: json)
+                                completionHandler?(true, transaction)
+                            } catch let error {
+                                NSLog("transaction(identifier) API call failed; unbox error: \(error)")
+                                completionHandler?(false, nil)
+                            }
+                        } else {
+                            NSLog("transaction(identifier) API call failed")
+                            completionHandler?(false, nil)
+                        }
+        })
     }
 }

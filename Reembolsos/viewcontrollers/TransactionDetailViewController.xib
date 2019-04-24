@@ -10,8 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrackingDetailViewController" customModule="Reembolsos" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionDetailViewController" customModule="Reembolsos" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="f8y-yg-FM9" id="E4K-bo-Rkq"/>
                 <outlet property="statusIndicatorView" destination="R8U-Zn-6MT" id="ybr-I7-Bqf"/>
                 <outlet property="tableView" destination="Fsv-Jx-jqG" id="Hva-IA-Fyo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,27 +24,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8U-Zn-6MT" customClass="StatusIndicatorView" customModule="Reembolsos" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="30" width="375" height="68"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="80"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="68" id="kau-YD-RXO"/>
+                        <constraint firstAttribute="height" constant="80" id="kau-YD-RXO"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Fsv-Jx-jqG">
-                    <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                    <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="41B-27-Rnx"/>
                         <outlet property="delegate" destination="-1" id="vdh-HI-vd3"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f8y-yg-FM9">
+                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="f8y-yg-FM9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1J3-vX-hJr"/>
                 <constraint firstItem="R8U-Zn-6MT" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2eE-Jf-wBq"/>
                 <constraint firstItem="Fsv-Jx-jqG" firstAttribute="top" secondItem="R8U-Zn-6MT" secondAttribute="bottom" constant="10" id="5PE-CU-2q4"/>
                 <constraint firstItem="R8U-Zn-6MT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FXP-sY-y3k"/>
                 <constraint firstItem="Fsv-Jx-jqG" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="RX4-DS-ARH"/>
+                <constraint firstItem="f8y-yg-FM9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="XgN-aj-8Ac"/>
                 <constraint firstItem="Fsv-Jx-jqG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kFZ-2r-A3w"/>
                 <constraint firstItem="R8U-Zn-6MT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="mF2-WM-ggz"/>
                 <constraint firstItem="Fsv-Jx-jqG" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nmy-AN-PSr"/>

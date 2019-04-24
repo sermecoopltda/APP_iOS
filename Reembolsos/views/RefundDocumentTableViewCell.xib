@@ -32,23 +32,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg6-fW-vfP">
-                                <rect key="frame" x="255" y="0.0" width="35" height="32"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ARf-xg-dmv">
+                                <rect key="frame" x="260" y="5" width="30" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="SlH-7e-i1R"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="UPa-Qn-suk"/>
+                                    <constraint firstAttribute="height" constant="22" id="6vY-gg-A4N"/>
+                                    <constraint firstAttribute="width" constant="30" id="gGE-gz-OBc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.38136772260000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Gg6-fW-vfP" secondAttribute="trailing" id="0Fx-cp-VUk"/>
-                            <constraint firstItem="Gg6-fW-vfP" firstAttribute="centerY" secondItem="xpr-Wa-w14" secondAttribute="centerY" id="4Px-iA-3mm"/>
+                            <constraint firstAttribute="trailing" secondItem="ARf-xg-dmv" secondAttribute="trailing" id="5oI-Zo-P03"/>
                             <constraint firstAttribute="height" constant="32" id="U8v-ly-aAB"/>
                             <constraint firstItem="FDZ-ua-BgT" firstAttribute="leading" secondItem="xpr-Wa-w14" secondAttribute="leading" id="crH-hP-poe"/>
+                            <constraint firstItem="ARf-xg-dmv" firstAttribute="centerY" secondItem="xpr-Wa-w14" secondAttribute="centerY" id="hC7-PK-8tA"/>
                             <constraint firstItem="FDZ-ua-BgT" firstAttribute="centerY" secondItem="xpr-Wa-w14" secondAttribute="centerY" id="tr5-ce-hh9"/>
                         </constraints>
                     </view>
@@ -83,12 +80,15 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="actionLabel" destination="Gg6-fW-vfP" id="8s5-RK-Ibw"/>
                 <outlet property="documentContainerView" destination="v4A-pv-4VL" id="19O-8E-f8c"/>
                 <outlet property="documentHeightConstraint" destination="dXw-Ez-rd4" id="rk8-ha-4OT"/>
                 <outlet property="documentImageView" destination="j6l-WA-15O" id="XXQ-3f-P2P"/>
+                <outlet property="iconImageView" destination="ARf-xg-dmv" id="BIZ-zf-hUQ"/>
                 <outlet property="titleLabel" destination="FDZ-ua-BgT" id="Ja7-1p-gOR"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="camera-icon" width="29.5" height="22"/>
+    </resources>
 </document>

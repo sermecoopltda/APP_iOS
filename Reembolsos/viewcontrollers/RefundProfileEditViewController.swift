@@ -128,6 +128,10 @@ class RefundProfileEditViewController: UIViewController {
         }
     }
 
+    fileprivate var nextButtonItem: UIBarButtonItem {
+        return UIBarButtonItem(title: "Siguiente", style: .done, target: self, action: #selector(RefundProfileEditViewController.next(_:)))
+    }
+
     fileprivate var textfields: [IndexPath: UITextField] = [:]
     var benefitRules: BenefitRulesModel?
 
@@ -145,7 +149,6 @@ class RefundProfileEditViewController: UIViewController {
         callButton.layer.borderColor = UIColor(hex: "#333333").cgColor
 
         refreshProfile()
-        conditionallyEnableNextButton()
     }
 
     override func viewDidLayoutSubviews() {
@@ -167,8 +170,9 @@ class RefundProfileEditViewController: UIViewController {
             (success: Bool, user: UserModel?) in
             activityIndicator.stopAnimating()
             if success, let user = user {
-                self.navigationItem.rightBarButtonItem = nil
                 self.user = user
+                self.navigationItem.rightBarButtonItem = self.nextButtonItem
+                self.conditionallyEnableNextButton()
             } else {
                 let controller = UIAlertController(title: "Error Obteniendo Datos", message: "Ocurrió un error al obtener los datos del usuario. Por favor revisa tus ajustes de red e intenta nuevamente.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
@@ -202,11 +206,11 @@ class RefundProfileEditViewController: UIViewController {
         let textFields: [UITextField] = [nameTextField, phoneTextField, emailTextField]
         for textField in textFields {
             guard let text = textField.text, text.count > 0 else {
-                navigationItem.rightBarButtonItem = nil
+                navigationItem.rightBarButtonItem?.isEnabled = false
                 return
             }
         }
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Siguiente", style: .done, target: self, action: #selector(RefundProfileEditViewController.next(_:)))
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
     // MARK: Control Actions
@@ -222,6 +226,7 @@ class RefundProfileEditViewController: UIViewController {
             (success: Bool) in
             self.navigationItem.hidesBackButton = false
             self.tableView.isUserInteractionEnabled = true
+            self.navigationItem.rightBarButtonItem = self.nextButtonItem
             self.conditionallyEnableNextButton()
             if success {
                 let controller = RefundRequestViewController()
