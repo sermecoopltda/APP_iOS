@@ -19,6 +19,8 @@ public struct UserModel {
     let bankName: String
     let bankAccount: String
     let beneficiaries: [BeneficiaryModel]
+    let planURL: URL?
+    let exclusionsURL: URL?
 }
 
 extension UserModel: Unboxable {
@@ -32,5 +34,7 @@ extension UserModel: Unboxable {
         bankName = try unboxer.unbox(key: "banco")
         bankAccount = try unboxer.unbox(key: "nro_cuenta")
         beneficiaries = try unboxer.unbox(key: "beneficiarios")
+        planURL = unboxer.unbox(key: "urlPlan")
+        exclusionsURL = unboxer.unbox(key: "exclusionesCobertura")
     }
 }

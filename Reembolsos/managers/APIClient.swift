@@ -299,4 +299,47 @@ public class APIClient: HTTPClient {
                         }
         })
     }
+
+    public func history(month: Int, year: Int, completionHandler: ((Bool) -> ())?) {
+        let path = "historicoReembolsos.php"
+
+        let calendar = Calendar.current
+        let fromComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month, day: 1)
+        let toComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month + 1, day: 0)
+        guard let fromDate = calendar.date(from: fromComponents), let toDate = calendar.date(from: toComponents) else {
+            completionHandler?(false)
+            return
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        let parameters: HTTPClientParameters = [
+            "desde": dateFormatter.string(from: fromDate),
+            "hasta": dateFormatter.string(from: toDate)
+        ]
+
+        performCall(authenticated: true,
+                    method: .GET,
+                    path: path,
+                    parameters: parameters,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        NSLog("history API call success: \(success); json: \(String(describing: json))")
+                        completionHandler?(success)
+//                        if success, let json = json as? [HTTPClientResponseJSON] {
+//                            do {
+//                                let trackingEvents: [TransactionModel] = try unbox(dictionaries: json)
+//                                completionHandler?(true, trackingEvents)
+//                            } catch let error {
+//                                NSLog("tracking(month, year) API call failed; unbox error: \(error)")
+//                                completionHandler?(false, [])
+//                            }
+//                        } else {
+//                            NSLog("tracking(month, year) API call failed")
+//                            completionHandler?(false, [])
+//                        }
+        })
+    }
+
+
 }

@@ -70,6 +70,8 @@ extension TransactionsViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - <UISearchBarDelegate> Methods
+
 extension TransactionsViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         NSLog("calendar")

@@ -8,14 +8,19 @@
 
 import Foundation
 import Unbox
+import QuickLook
 
-public struct TransactionDocumentModel {
+public class TransactionDocumentModel: NSObject, Unboxable, QLPreviewItem {
     let name: String
     let url: URL
-}
 
-extension TransactionDocumentModel: Unboxable {
-    public init(unboxer: Unboxer) throws {
+    public var previewItemURL: URL?
+
+    public var previewItemTitle: String? {
+        return name
+    }
+
+    public required init(unboxer: Unboxer) throws {
         name = try unboxer.unbox(key: "nombre")
         url = try unboxer.unbox(key: "url")
     }

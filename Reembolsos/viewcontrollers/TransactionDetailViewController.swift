@@ -101,6 +101,7 @@ class TransactionDetailViewController: UIViewController {
         super.viewDidLoad()
         dateFormatter.setLocalizedDateFormatFromTemplate("dMMMHm")
         navigationItem.title = "Estado de Solicitud"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tableView.register(UINib(nibName: String(describing: TrackingTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.cellIdentifier)
         tableView.register(UINib(nibName: String(describing: RefundDocumentTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.documentCellIdentifier)
         tableView.register(UINib(nibName: String(describing: RefundTextTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.textCellIdentifier)
@@ -169,15 +170,18 @@ extension TransactionDetailViewController: UITableViewDataSource {
             let document = transactionDetail?.documents[indexPath.row]
             cell.titleLabel.text = document?.name
             cell.showsIcon = false
+            cell.accessoryType = .none
             if let imageURL = document?.url {
                 cell.documentImage = AssetsClient.shared.image(dataForURL: imageURL)
                 if cell.documentImage == nil {
                     AssetsClient.shared.fetch(URL: imageURL, completionHandler: {
                         (data: Data?) in
-                        if data != nil {
+                        if let data = data, UIImage(data: data) != nil {
                             tableView.reloadRows(at: [indexPath], with: .none)
                         }
                     })
+                } else {
+                    cell.accessoryType = .disclosureIndicator
                 }
             }
             return cell
@@ -205,6 +209,20 @@ extension TransactionDetailViewController: UITableViewDelegate {
         case .documents: return UITableView.automaticDimension
         case .notes: return 78
         default: return tableView.rowHeight
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch TransactionDetailTableViewSection(indexPath.section) {
+        case .documents:
+            let document = transactionDetail?.documents[indexPath.row]
+            let controller = DocumentViewController()
+            controller.document = document
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller, animated: true)
+
+        default: ()
         }
     }
 }

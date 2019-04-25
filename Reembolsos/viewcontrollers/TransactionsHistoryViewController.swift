@@ -18,6 +18,10 @@ class TransactionsHistoryViewController: TransactionsViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        APIClient.shared.history(month: 4, year: 2019, completionHandler: {
+            (success: Bool) in
+            NSLog("history(month, year) API success: \(success)")
+        })
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

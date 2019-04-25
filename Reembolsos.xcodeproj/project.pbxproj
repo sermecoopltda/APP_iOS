@@ -16,7 +16,7 @@
 		7606E716223A0E1700C24D9E /* RefundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E714223A0E1700C24D9E /* RefundsViewController.swift */; };
 		7606E717223A0E1700C24D9E /* RefundsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7606E715223A0E1700C24D9E /* RefundsViewController.xib */; };
 		7606E71A223A0E2C00C24D9E /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E718223A0E2C00C24D9E /* TransactionsViewController.swift */; };
-		7606E71B223A0E2C00C24D9E /* TransactionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7606E719223A0E2C00C24D9E /* TransactionsViewController.xib */; };
+		7606E71B223A0E2C00C24D9E /* TransactionsTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7606E719223A0E2C00C24D9E /* TransactionsTrackingViewController.xib */; };
 		7606E71E223A0E3800C24D9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E71C223A0E3800C24D9E /* ProfileViewController.swift */; };
 		7606E71F223A0E3800C24D9E /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7606E71D223A0E3800C24D9E /* ProfileViewController.xib */; };
 		7606E721223A0E9500C24D9E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E720223A0E9500C24D9E /* NavigationController.swift */; };
@@ -54,6 +54,11 @@
 		76A1BB0D2241F0F5003C9BFA /* TransactionsHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */; };
 		76D72D5D2270413E0004F55E /* TransactionDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D72D5C2270413E0004F55E /* TransactionDetailModel.swift */; };
 		76D72D5F227041800004F55E /* TransactionDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D72D5E227041800004F55E /* TransactionDocumentModel.swift */; };
+		76D72D612270CA8E0004F55E /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D72D602270CA8E0004F55E /* DocumentViewController.swift */; };
+		76D72D642270EDEB0004F55E /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D72D622270EDEB0004F55E /* ProfileTableViewCell.swift */; };
+		76D72D652270EDEB0004F55E /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D72D632270EDEB0004F55E /* ProfileTableViewCell.xib */; };
+		76D72D682270F2B90004F55E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D72D662270F2B90004F55E /* ProfileEditViewController.swift */; };
+		76D72D692270F2B90004F55E /* ProfileEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D72D672270F2B90004F55E /* ProfileEditViewController.xib */; };
 		76DA4BAF2240A2950065174B /* RefundTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA4BAD2240A2950065174B /* RefundTermsViewController.swift */; };
 		76DA4BB02240A2950065174B /* RefundTermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76DA4BAE2240A2950065174B /* RefundTermsViewController.xib */; };
 		76DA4BB32240A31D0065174B /* refund_terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 76DA4BB22240A31D0065174B /* refund_terms.html */; };
@@ -91,7 +96,7 @@
 		7606E714223A0E1700C24D9E /* RefundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundsViewController.swift; sourceTree = "<group>"; };
 		7606E715223A0E1700C24D9E /* RefundsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundsViewController.xib; sourceTree = "<group>"; };
 		7606E718223A0E2C00C24D9E /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
-		7606E719223A0E2C00C24D9E /* TransactionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsViewController.xib; sourceTree = "<group>"; };
+		7606E719223A0E2C00C24D9E /* TransactionsTrackingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsTrackingViewController.xib; sourceTree = "<group>"; };
 		7606E71C223A0E3800C24D9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7606E71D223A0E3800C24D9E /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		7606E720223A0E9500C24D9E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -129,6 +134,11 @@
 		76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsHistoryViewController.swift; sourceTree = "<group>"; };
 		76D72D5C2270413E0004F55E /* TransactionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailModel.swift; sourceTree = "<group>"; };
 		76D72D5E227041800004F55E /* TransactionDocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDocumentModel.swift; sourceTree = "<group>"; };
+		76D72D602270CA8E0004F55E /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		76D72D622270EDEB0004F55E /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		76D72D632270EDEB0004F55E /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		76D72D662270F2B90004F55E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		76D72D672270F2B90004F55E /* ProfileEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditViewController.xib; sourceTree = "<group>"; };
 		76DA4BAD2240A2950065174B /* RefundTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundTermsViewController.swift; sourceTree = "<group>"; };
 		76DA4BAE2240A2950065174B /* RefundTermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundTermsViewController.xib; sourceTree = "<group>"; };
 		76DA4BB22240A31D0065174B /* refund_terms.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = refund_terms.html; sourceTree = "<group>"; };
@@ -217,7 +227,6 @@
 				7606E714223A0E1700C24D9E /* RefundsViewController.swift */,
 				7606E715223A0E1700C24D9E /* RefundsViewController.xib */,
 				7606E718223A0E2C00C24D9E /* TransactionsViewController.swift */,
-				7606E719223A0E2C00C24D9E /* TransactionsViewController.xib */,
 				7606E71C223A0E3800C24D9E /* ProfileViewController.swift */,
 				7606E71D223A0E3800C24D9E /* ProfileViewController.xib */,
 				76DA4BAD2240A2950065174B /* RefundTermsViewController.swift */,
@@ -230,6 +239,7 @@
 				76A1BAFD2241E005003C9BFA /* SegmentedViewController.xib */,
 				76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */,
 				76A1BB042241E0D0003C9BFA /* TransactionsTrackingViewController.swift */,
+				7606E719223A0E2C00C24D9E /* TransactionsTrackingViewController.xib */,
 				76525488224D46EE00849401 /* TransactionDetailViewController.swift */,
 				76525489224D46EE00849401 /* TransactionDetailViewController.xib */,
 				7652548C224D46FF00849401 /* HistoryDetailViewController.swift */,
@@ -240,6 +250,9 @@
 				763E137C2266969A005D9DAA /* CalendarViewController.swift */,
 				763E137B22669699005D9DAA /* CalendarMonthViewController.swift */,
 				763E137D2266969A005D9DAA /* CalendarMonthViewController.xib */,
+				76D72D602270CA8E0004F55E /* DocumentViewController.swift */,
+				76D72D662270F2B90004F55E /* ProfileEditViewController.swift */,
+				76D72D672270F2B90004F55E /* ProfileEditViewController.xib */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -263,6 +276,8 @@
 				763445BD225483EF00915BC7 /* StatusIndicatorView.swift */,
 				763E137722669679005D9DAA /* CalendarCollectionViewCell.swift */,
 				763E137822669679005D9DAA /* CalendarCollectionViewCell.xib */,
+				76D72D622270EDEB0004F55E /* ProfileTableViewCell.swift */,
+				76D72D632270EDEB0004F55E /* ProfileTableViewCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -421,7 +436,9 @@
 				76A1BAF72241768B003C9BFA /* RefundRequestTableViewCell.xib in Resources */,
 				76DA4BB32240A31D0065174B /* refund_terms.html in Resources */,
 				763E137A2266967A005D9DAA /* CalendarCollectionViewCell.xib in Resources */,
-				7606E71B223A0E2C00C24D9E /* TransactionsViewController.xib in Resources */,
+				76D72D692270F2B90004F55E /* ProfileEditViewController.xib in Resources */,
+				76D72D652270EDEB0004F55E /* ProfileTableViewCell.xib in Resources */,
+				7606E71B223A0E2C00C24D9E /* TransactionsTrackingViewController.xib in Resources */,
 				76A1BB0B2241EC3B003C9BFA /* TransactionTableViewCell.xib in Resources */,
 				76A1BAFF2241E006003C9BFA /* SegmentedViewController.xib in Resources */,
 				7606E717223A0E1700C24D9E /* RefundsViewController.xib in Resources */,
@@ -507,11 +524,13 @@
 				7606E716223A0E1700C24D9E /* RefundsViewController.swift in Sources */,
 				76DA4BBD2240BBB00065174B /* UIViewAnimationOptionsWithCurve.swift in Sources */,
 				76E7747A225700F20017F10E /* APIClient.swift in Sources */,
+				76D72D642270EDEB0004F55E /* ProfileTableViewCell.swift in Sources */,
 				76A1BAFA22419598003C9BFA /* RefundTextTableViewCell.swift in Sources */,
 				7606E721223A0E9500C24D9E /* NavigationController.swift in Sources */,
 				763EE11F226062BC00BF6921 /* UserModel.swift in Sources */,
 				76A1BB0A2241EC3A003C9BFA /* TransactionTableViewCell.swift in Sources */,
 				76DA4BB62240ACC90065174B /* RefundProfileEditViewController.swift in Sources */,
+				76D72D682270F2B90004F55E /* ProfileEditViewController.swift in Sources */,
 				763E137F2266969A005D9DAA /* CalendarViewController.swift in Sources */,
 				76A1BAF62241768B003C9BFA /* RefundRequestTableViewCell.swift in Sources */,
 				76E77484225AE6CC0017F10E /* BenefitRulesModel.swift in Sources */,
@@ -535,6 +554,7 @@
 				76A1BAF222412851003C9BFA /* RefundRequestViewController.swift in Sources */,
 				7606E713223A0A1F00C24D9E /* UIColor.swift in Sources */,
 				7606E71E223A0E3800C24D9E /* ProfileViewController.swift in Sources */,
+				76D72D612270CA8E0004F55E /* DocumentViewController.swift in Sources */,
 				76DA4BAF2240A2950065174B /* RefundTermsViewController.swift in Sources */,
 				763445BE225483EF00915BC7 /* StatusIndicatorView.swift in Sources */,
 				76E77482225ADC3C0017F10E /* SplashViewController.swift in Sources */,
