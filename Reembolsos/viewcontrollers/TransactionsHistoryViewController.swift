@@ -8,13 +8,11 @@
 
 import UIKit
 
-class TransactionsHistoryViewController: TransactionsViewController {
+class TransactionsHistoryViewController: UIViewController {
     convenience init() {
-        self.init(nibName: String(describing: TransactionsViewController.self), bundle: nil)
+        self.init(nibName: nil, bundle: nil)
         navigationItem.title = "Historial"
     }
-
-    override var showsStatusIndicator: Bool { return false }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +20,5 @@ class TransactionsHistoryViewController: TransactionsViewController {
             (success: Bool) in
             NSLog("history(month, year) API success: \(success)")
         })
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        super.tableView(tableView, didSelectRowAt: indexPath)
-        let controller = HistoryDetailViewController()
-        navigationController?.pushViewController(controller, animated: true)
     }
 }
