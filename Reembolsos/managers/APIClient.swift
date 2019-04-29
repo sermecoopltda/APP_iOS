@@ -300,14 +300,14 @@ public class APIClient: HTTPClient {
         })
     }
 
-    public func history(month: Int, year: Int, completionHandler: ((Bool) -> ())?) {
+    public func history(month: Int, year: Int, completionHandler: ((Bool, [HistoricModel]) -> ())?) {
         let path = "historicoReembolsos.php"
 
         let calendar = Calendar.current
         let fromComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month, day: 1)
         let toComponents = DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month + 1, day: 0)
         guard let fromDate = calendar.date(from: fromComponents), let toDate = calendar.date(from: toComponents) else {
-            completionHandler?(false)
+            completionHandler?(false, [])
             return
         }
         let dateFormatter = DateFormatter()
@@ -324,22 +324,46 @@ public class APIClient: HTTPClient {
                     parameters: parameters,
                     completionHandler: {
                         (success: Bool, response: HTTPURLResponse?, json: Any?) in
-                        NSLog("history API call success: \(success); json: \(String(describing: json))")
-                        completionHandler?(success)
-//                        if success, let json = json as? [HTTPClientResponseJSON] {
-//                            do {
-//                                let trackingEvents: [TransactionModel] = try unbox(dictionaries: json)
-//                                completionHandler?(true, trackingEvents)
-//                            } catch let error {
-//                                NSLog("tracking(month, year) API call failed; unbox error: \(error)")
-//                                completionHandler?(false, [])
-//                            }
-//                        } else {
-//                            NSLog("tracking(month, year) API call failed")
-//                            completionHandler?(false, [])
-//                        }
+                        if success, let json = json as? [HTTPClientResponseJSON] {
+                            do {
+                                let historicEvents: [HistoricModel] = try unbox(dictionaries: json)
+                                completionHandler?(true, historicEvents)
+                            } catch let error {
+                                NSLog("history(month, year) API call failed; unbox error: \(error)")
+                                completionHandler?(false, [])
+                            }
+                        } else {
+                            NSLog("history(month, year) API call failed")
+                            completionHandler?(false, [])
+                        }
         })
     }
 
+    public func historic(identifier: String, completionHandler: ((Bool) -> ())?) {
+        let path = "detalleHistoricoReembolsos.php"
+        let parameters: HTTPClientParameters = ["folioReembolso": identifier]
+
+        performCall(authenticated: true,
+                    method: .GET,
+                    path: path,
+                    parameters: parameters,
+                    completionHandler: {
+                        (success: Bool, response: HTTPURLResponse?, json: Any?) in
+                        if success, let json = json as? [HTTPClientResponseJSON] {
+                            NSLog("historic(identifier) success; json: \(json)")
+//                            do {
+//                                let transaction: TransactionDetailModel = try unbox(dictionary: json)
+//                                completionHandler?(true, transaction)
+//                            } catch let error {
+//                                NSLog("transaction(identifier) API call failed; unbox error: \(error)")
+//                                completionHandler?(false, nil)
+//                            }
+                        } else {
+                            NSLog("historic(identifier) API call failed")
+                            completionHandler?(false)
+                        }
+        })
+
+    }
 
 }

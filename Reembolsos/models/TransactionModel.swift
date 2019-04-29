@@ -36,7 +36,7 @@ public enum TransactionStatus: String, UnboxableEnum {
     }
 }
 
-public struct TransactionModel {
+public struct TransactionModel: DateDrivenEntryProtocol {
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -46,11 +46,11 @@ public struct TransactionModel {
     }()
 
     let identifier: String
-    let createdAt: Date
+    public let createdAt: Date
     let amount: Int
     let status: TransactionStatus
     let statusText: String
-    let title: String
+    public let title: String
 }
 
 extension TransactionModel: Unboxable {

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsHistoryViewController" customModule="Reembolsos" customModuleProvider="target">
+            <connections>
+                <outlet property="calendarButton" destination="EoK-fM-v8O" id="eY5-bc-a2t"/>
+                <outlet property="dateButton" destination="vmW-V4-L0x" id="Tv8-dV-vMW"/>
+                <outlet property="emptyStateImageView" destination="n1Z-eW-SQM" id="Uxf-OG-St0"/>
+                <outlet property="emptyStateLabel" destination="cj2-UY-phD" id="lWB-43-Oql"/>
+                <outlet property="emptyStateView" destination="xsy-7k-DEt" id="WFX-Gh-DTB"/>
+                <outlet property="tableView" destination="Tod-zg-s72" id="qFs-TP-OjI"/>
+                <outlet property="view" destination="iN0-l3-epB" id="cJF-VV-Svi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tod-zg-s72">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <view key="tableHeaderView" contentMode="scaleToFill" id="KLz-h8-Y6e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmW-V4-L0x">
+                                <rect key="frame" x="160.5" y="6" width="54" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ME3-ut-9qC"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="YP5-nG-1en"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="calendarButtonTouched:" destination="-1" eventType="touchUpInside" id="2Le-0R-rlN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoK-fM-v8O">
+                                <rect key="frame" x="331" y="6" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Kyw-SO-L88"/>
+                                    <constraint firstAttribute="width" constant="44" id="vxb-AP-pIb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="tintColor" red="0.0" green="0.23529411759999999" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <state key="normal" image="search-icon-calendar"/>
+                                <connections>
+                                    <action selector="calendarButtonTouched:" destination="-1" eventType="touchUpInside" id="Gr7-Oy-jQc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EoK-fM-v8O" secondAttribute="trailing" id="5P5-YI-BQH"/>
+                            <constraint firstItem="vmW-V4-L0x" firstAttribute="centerX" secondItem="KLz-h8-Y6e" secondAttribute="centerX" id="g3a-OO-geD"/>
+                            <constraint firstItem="vmW-V4-L0x" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="EoK-fM-v8O" secondAttribute="leading" id="gGt-px-iok"/>
+                            <constraint firstItem="EoK-fM-v8O" firstAttribute="centerY" secondItem="KLz-h8-Y6e" secondAttribute="centerY" id="wJm-eH-WGb"/>
+                            <constraint firstItem="vmW-V4-L0x" firstAttribute="centerY" secondItem="KLz-h8-Y6e" secondAttribute="centerY" id="wNd-4S-uhP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Xm1-Be-m01"/>
+                        <outlet property="delegate" destination="-1" id="wEb-da-ord"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Tod-zg-s72" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7iA-vU-YSy"/>
+                <constraint firstAttribute="trailing" secondItem="Tod-zg-s72" secondAttribute="trailing" id="Ctu-eG-Y8S"/>
+                <constraint firstAttribute="bottom" secondItem="Tod-zg-s72" secondAttribute="bottom" id="nLh-e8-YkO"/>
+                <constraint firstItem="Tod-zg-s72" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ze0-Jl-JKO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+        <view contentMode="scaleToFill" id="xsy-7k-DEt">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-empty" translatesAutoresizingMaskIntoConstraints="NO" id="n1Z-eW-SQM">
+                    <rect key="frame" x="150" y="296" width="75" height="75"/>
+                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="2yE-gg-II5"/>
+                        <constraint firstAttribute="width" constant="75" id="E8a-AG-gdI"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No existen resultados para la fecha o criterio de búsqueda especificados." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj2-UY-phD">
+                    <rect key="frame" x="35" y="381" width="305" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="KXg-zK-eFe"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="egp-v3-LUc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="cj2-UY-phD" firstAttribute="top" secondItem="n1Z-eW-SQM" secondAttribute="bottom" constant="10" id="F7r-j1-HC8"/>
+                <constraint firstItem="n1Z-eW-SQM" firstAttribute="centerX" secondItem="xsy-7k-DEt" secondAttribute="centerX" id="JjK-X9-QCe"/>
+                <constraint firstItem="cj2-UY-phD" firstAttribute="centerX" secondItem="n1Z-eW-SQM" secondAttribute="centerX" id="awB-RN-ZCj"/>
+                <constraint firstItem="cj2-UY-phD" firstAttribute="width" secondItem="xsy-7k-DEt" secondAttribute="width" constant="-70" id="g4J-56-aJ6"/>
+                <constraint firstItem="n1Z-eW-SQM" firstAttribute="centerY" secondItem="xsy-7k-DEt" secondAttribute="centerY" id="z2f-eh-wfZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="zLE-es-Qvs"/>
+            <point key="canvasLocation" x="814" y="161"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon-empty" width="72" height="72"/>
+        <image name="search-icon-calendar" width="21" height="22"/>
+    </resources>
+</document>

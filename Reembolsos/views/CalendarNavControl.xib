@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CalendarNavControl" customModule="Reembolsos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="32"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ro-Vg-XJq">
+                    <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="1Ro-Vg-XJq" secondAttribute="height" id="1C2-ZG-YKd"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="calendar-prev"/>
+                    <connections>
+                        <action selector="prevButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="fHJ-vk-zzn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRb-jf-cOC">
+                    <rect key="frame" x="128" y="0.0" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="NRb-jf-cOC" secondAttribute="height" id="igA-3Q-YxF"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="calendar-next"/>
+                    <connections>
+                        <action selector="nextButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="ndf-QP-jj8"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdt-bQ-My0">
+                    <rect key="frame" x="58.5" y="0.0" width="43.5" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="5Ys-SU-FGF"/>
+                        <constraint firstAttribute="height" constant="32" id="Q0b-uQ-7Bs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Wdt-bQ-My0" secondAttribute="bottom" id="73J-dj-iog"/>
+                <constraint firstAttribute="bottom" secondItem="1Ro-Vg-XJq" secondAttribute="bottom" id="9D8-F3-gFB"/>
+                <constraint firstItem="Wdt-bQ-My0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AvH-7W-3EV"/>
+                <constraint firstItem="1Ro-Vg-XJq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NcH-hv-oB3"/>
+                <constraint firstItem="1Ro-Vg-XJq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qp2-5o-4hY"/>
+                <constraint firstItem="Wdt-bQ-My0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Rfp-P0-Jk9"/>
+                <constraint firstItem="Wdt-bQ-My0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Svz-Aj-cJC"/>
+                <constraint firstAttribute="trailing" secondItem="NRb-jf-cOC" secondAttribute="trailing" id="Uap-9d-JI5"/>
+                <constraint firstItem="NRb-jf-cOC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fAr-53-1Im"/>
+                <constraint firstItem="NRb-jf-cOC" firstAttribute="width" secondItem="NRb-jf-cOC" secondAttribute="height" id="gAS-k6-2xj"/>
+                <constraint firstAttribute="bottom" secondItem="NRb-jf-cOC" secondAttribute="bottom" id="izS-ky-GXe"/>
+                <constraint firstItem="Wdt-bQ-My0" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="NRb-jf-cOC" secondAttribute="leading" id="qjl-KM-hw4"/>
+                <constraint firstItem="Wdt-bQ-My0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Ro-Vg-XJq" secondAttribute="trailing" id="s0N-TK-pAv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="nextButton" destination="NRb-jf-cOC" id="poR-r3-TB0"/>
+                <outlet property="prevButton" destination="1Ro-Vg-XJq" id="Kpy-st-j9u"/>
+                <outlet property="titleLabel" destination="Wdt-bQ-My0" id="Rtu-Sn-JTs"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendar-next" width="10" height="12.5"/>
+        <image name="calendar-prev" width="10" height="12.5"/>
+    </resources>
+</document>

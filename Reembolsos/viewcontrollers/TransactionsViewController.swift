@@ -20,7 +20,6 @@ class TransactionsViewController: UIViewController {
 
     fileprivate var shouldBeginEditing = true
 
-    var showsStatusIndicator: Bool { return false }
     let dateFormatter = DateFormatter()
 
     var dataSource: [TransactionModel] = [] {
@@ -52,7 +51,6 @@ extension TransactionsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: statics.cellIdentifier, for: indexPath) as! TransactionTableViewCell
-        cell.showsStatusIndicator = showsStatusIndicator
         let transaction = dataSource[indexPath.row]
         cell.titleLabel.text = transaction.title
         cell.subtitleLabel.text = "$\(PriceFormatter.string(from: transaction.amount))"

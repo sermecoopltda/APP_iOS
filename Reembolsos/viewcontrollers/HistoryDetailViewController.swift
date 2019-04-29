@@ -16,12 +16,20 @@ class HistoryDetailViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var badgeImageView: UIImageView!
 
+    var identifier: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Detalle de Transacción"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "mail-icon"), style: .plain, target: nil, action: nil)
         badgeImageView.tintColor = UIColor(hex: "#009e10")
         tableView.register(UINib(nibName: String(describing: TrackingTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.cellIdentifier)
+
+        guard let identifier = identifier else { return }
+        APIClient.shared.historic(identifier: identifier, completionHandler: {
+            (success: Bool) in
+            NSLog("historic API call success: \(success)")
+        })
     }
 }
 

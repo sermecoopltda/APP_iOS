@@ -28,6 +28,7 @@ private enum TransactionDetailTableViewSection: Int {
 }
 
 private enum TransactionDetailTableViewDataRow: Int {
+    case identifier
     case createdAt
     case amount
     case beneficiary
@@ -40,6 +41,7 @@ private enum TransactionDetailTableViewDataRow: Int {
 
     var title: String? {
         switch self {
+        case .identifier: return "Nº de Folio"
         case .createdAt: return "Fecha Ingreso"
         case .amount: return "Monto"
         case .beneficiary: return "Beneficiario"
@@ -156,6 +158,7 @@ extension TransactionDetailViewController: UITableViewDataSource {
             cell.textLabel?.text = row.title
             if let transactionDetail = transactionDetail {
                 switch row {
+                case .identifier: cell.detailTextLabel?.text = transactionDetail.identifier
                 case .createdAt: cell.detailTextLabel?.text = dateFormatter.string(from: transactionDetail.createdAt)
                 case .amount: cell.detailTextLabel?.text = "$\(PriceFormatter.string(from: transactionDetail.amount))"
                 case .beneficiary: cell.detailTextLabel?.text = transactionDetail.beneficiary
@@ -176,7 +179,7 @@ extension TransactionDetailViewController: UITableViewDataSource {
                 if cell.documentImage == nil {
                     AssetsClient.shared.fetch(URL: imageURL, completionHandler: {
                         (data: Data?) in
-                        if let data = data, UIImage(data: data) != nil {
+                        if let data = data, UIImage(data: data) != nil {    
                             tableView.reloadRows(at: [indexPath], with: .none)
                         }
                     })

@@ -20,7 +20,7 @@ class CalendarMonthViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var separatorHeightConstraint: NSLayoutConstraint!
 
-    var trackingEvents: [TransactionModel] = []
+    var events: [DateDrivenEntryProtocol] = []
 
     private(set) var selectedDate: Date? {
         set {
@@ -80,9 +80,12 @@ class CalendarMonthViewController: UIViewController {
         return weekday
     }
 
-    convenience init(initialDate date: Date) {
+    fileprivate var mode: CalendarMode = .tracking
+
+    convenience init(initialDate date: Date, mode: CalendarMode) {
         self.init(nibName: nil, bundle: nil)
         selectedDate = date
+        self.mode = mode 
     }
 
     override func viewDidLoad() {
@@ -112,17 +115,33 @@ class CalendarMonthViewController: UIViewController {
             return
         }
 
-        APIClient.shared.tracking(month: selectedMonth, year: selectedYear, completionHandler: {
-            (success: Bool, trackingEvents: [TransactionModel]) in
-            if success {
-                let calendar = Calendar.current
-                self.trackingEvents = trackingEvents
-                self.selectableDays = Set(trackingEvents.map {
-                    return calendar.component(.day, from: $0.createdAt)
-                })
-                self.selectionHandler?(trackingEvents, self.selectedDate)
-            }
-        })
+        switch mode {
+        case .tracking:
+            APIClient.shared.tracking(month: selectedMonth, year: selectedYear, completionHandler: {
+                (success: Bool, trackingEvents: [TransactionModel]) in
+                if success {
+                    let calendar = Calendar.current
+                    self.events = trackingEvents
+                    self.selectableDays = Set(trackingEvents.map {
+                        return calendar.component(.day, from: $0.createdAt)
+                    })
+                    self.selectionHandler?(trackingEvents, self.selectedDate)
+                }
+            })
+
+        case .history:
+            APIClient.shared.history(month: selectedMonth, year: selectedYear, completionHandler: {
+                (success: Bool, historyEvents: [HistoricModel]) in
+                if success {
+                    let calendar = Calendar.current
+                    self.events = historyEvents
+                    self.selectableDays = Set(historyEvents.map {
+                        return calendar.component(.day, from: $0.createdAt)
+                    })
+                    self.selectionHandler?(historyEvents, self.selectedDate)
+                }
+            })
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -182,7 +201,7 @@ extension CalendarMonthViewController: UICollectionViewDelegate {
         }
         guard let selectedDate = selectedDate else { return }
         let calendar = Calendar.current
-        selectionHandler?(trackingEvents.filter {
+        selectionHandler?(events.filter {
             if selectedDay == 0 { return true }
             return calendar.isDate($0.createdAt, inSameDayAs: selectedDate)
         }, selectedDate)

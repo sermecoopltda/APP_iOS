@@ -39,12 +39,12 @@ class TransactionsTrackingViewController: UIViewController {
 
     convenience init() {
         self.init(nibName: nil, bundle: nil)
+        dateFormatter.setLocalizedDateFormatFromTemplate("dMMMHm")
         navigationItem.title = "Seguimiento"
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.setLocalizedDateFormatFromTemplate("dMMMHm")
         searchBar.setImage(#imageLiteral(resourceName: "search-icon-calendar"), for: .bookmark, state: .normal)
         searchBar.setImage(#imageLiteral(resourceName: "search-icon-calendar"), for: .bookmark, state: [.highlighted, .selected])
         searchBar.showsBookmarkButton = true
@@ -92,7 +92,6 @@ extension TransactionsTrackingViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: statics.cellIdentifier, for: indexPath) as! TransactionTableViewCell
-        cell.showsStatusIndicator = true
         let transaction = dataSource[indexPath.row]
         cell.titleLabel.text = transaction.title
         cell.subtitleLabel.text = "$\(PriceFormatter.string(from: transaction.amount))"
@@ -118,11 +117,12 @@ extension TransactionsTrackingViewController: UITableViewDelegate {
 
 extension TransactionsTrackingViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        let controller = CalendarViewController()
+        let controller = CalendarViewController(mode: .tracking)
+        controller.date = date
         controller.dismissHandler = {
-            (trackingEvents: [TransactionModel], date: Date?) in
-            self.dataSource = trackingEvents
-            self.retrievedTransactions = trackingEvents
+            (trackingEvents: [DateDrivenEntryProtocol], date: Date?) in
+            self.dataSource = trackingEvents as? [TransactionModel] ?? []
+            self.retrievedTransactions = trackingEvents as? [TransactionModel] ?? []
             if let date = date {
                 self.date = date
             }
