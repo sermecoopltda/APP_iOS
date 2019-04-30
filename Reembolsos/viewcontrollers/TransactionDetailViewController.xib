@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionDetailViewController" customModule="Reembolsos" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="f8y-yg-FM9" id="E4K-bo-Rkq"/>
+                <outlet property="notesTextView" destination="rBN-2W-vRe" id="rO0-JR-Pno"/>
                 <outlet property="statusIndicatorView" destination="R8U-Zn-6MT" id="ybr-I7-Bqf"/>
                 <outlet property="tableView" destination="Fsv-Jx-jqG" id="Hva-IA-Fyo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -56,5 +57,14 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
+        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" id="rBN-2W-vRe">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+            <point key="canvasLocation" x="732" y="-484"/>
+        </textView>
     </objects>
 </document>

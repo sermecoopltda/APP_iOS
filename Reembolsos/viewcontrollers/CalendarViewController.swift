@@ -65,6 +65,11 @@ class CalendarViewController: UIPageViewController {
         let calendar = Calendar.current
         guard let monthController = viewControllers?.first as? CalendarMonthViewController, let date = monthController.selectedDate, let newDate = calendar.date(byAdding: .month, value: 1, to: date) else { return }
         let controller = CalendarMonthViewController(initialDate: newDate, mode: mode)
+        controller.selectionHandler = {
+            (events: [DateDrivenEntryProtocol], date: Date?) in
+            self.trackingEvents = events
+            self.date = date
+        }
         setViewControllers([controller], direction: .forward, animated: animated, completion: {
             (finished: Bool) in
             if !finished { return }
@@ -78,6 +83,11 @@ class CalendarViewController: UIPageViewController {
         let calendar = Calendar.current
         guard let monthController = viewControllers?.first as? CalendarMonthViewController, let date = monthController.selectedDate, let newDate = calendar.date(byAdding: .month, value: -1, to: date) else { return }
         let controller = CalendarMonthViewController(initialDate: newDate, mode: mode)
+        controller.selectionHandler = {
+            (events: [DateDrivenEntryProtocol], date: Date?) in
+            self.trackingEvents = events
+            self.date = date
+        }
         setViewControllers([controller], direction: .reverse, animated: animated, completion: {
             (finished: Bool) in
             if !finished { return }

@@ -70,6 +70,7 @@ class TransactionsTrackingViewController: UIViewController {
             (success: Bool, trackingEvents: [TransactionModel]) in
             if success {
                 self.dataSource = trackingEvents
+                self.retrievedTransactions = trackingEvents
             }
             self.refreshControl.endRefreshing()
         })

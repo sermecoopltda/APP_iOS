@@ -12,8 +12,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryDetailViewController" customModule="Reembolsos" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="M2J-bi-8xY" id="GSY-t5-mrr"/>
                 <outlet property="badgeImageView" destination="rBh-ge-JmS" id="GO8-SG-yz9"/>
+                <outlet property="detailsButton" destination="4Om-bN-Qa7" id="Ux1-1h-lxi"/>
+                <outlet property="notesTextView" destination="wPn-mG-s4z" id="Iu9-Xa-SHx"/>
+                <outlet property="tableFooterView" destination="rP8-Av-7HT" id="935-JV-gcf"/>
                 <outlet property="tableView" destination="Pb9-Vk-to8" id="e9N-j1-DRF"/>
+                <outlet property="totalLabel" destination="EkN-7o-EXQ" id="gXl-XA-hTW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,8 +38,8 @@
                                 <constraint firstAttribute="width" constant="60" id="s9u-OS-NeE"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transacción Exitosa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLm-LQ-Hb4">
-                            <rect key="frame" x="100" y="22" width="167" height="23"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bonificación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLm-LQ-Hb4">
+                            <rect key="frame" x="100" y="22" width="103" height="23"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -60,16 +65,47 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="52" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Pb9-Vk-to8">
                     <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <view key="tableFooterView" contentMode="scaleToFill" id="rP8-Av-7HT">
+                        <rect key="frame" x="0.0" y="1016.5" width="375" height="128"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4Om-bN-Qa7">
+                                <rect key="frame" x="15" y="10" width="345" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="sQs-nD-vF5"/>
+                                </constraints>
+                                <state key="normal" title="Para obtener mayor detalle de su reembolso, presione aquí">
+                                    <color key="titleColor" red="0.0" green="0.23529411759999999" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="detailsButtonTouched:" destination="-1" eventType="touchUpInside" id="bPt-nw-KTz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Om-bN-Qa7" secondAttribute="trailing" constant="15" id="3dX-aZ-lbN"/>
+                            <constraint firstAttribute="bottom" secondItem="4Om-bN-Qa7" secondAttribute="bottom" constant="25" id="8CX-iM-Nlf"/>
+                            <constraint firstItem="4Om-bN-Qa7" firstAttribute="top" secondItem="rP8-Av-7HT" secondAttribute="top" constant="10" id="M7F-PW-BSX"/>
+                            <constraint firstItem="4Om-bN-Qa7" firstAttribute="leading" secondItem="rP8-Av-7HT" secondAttribute="leading" constant="15" id="exl-Ig-skD"/>
+                        </constraints>
+                    </view>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="6WO-SB-ALN"/>
                         <outlet property="delegate" destination="-1" id="f56-FG-9Ef"/>
                     </connections>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="M2J-bi-8xY">
+                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                    <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Pb9-Vk-to8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Ad0-VE-ZNs"/>
+                <constraint firstItem="M2J-bi-8xY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ECo-h7-b7e"/>
                 <constraint firstItem="KJs-hU-7ZK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ESP-50-Mti"/>
+                <constraint firstItem="M2J-bi-8xY" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Su2-0R-MVo"/>
                 <constraint firstItem="KJs-hU-7ZK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="bHS-Hh-kYB"/>
                 <constraint firstItem="Pb9-Vk-to8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bLp-dM-iLc"/>
                 <constraint firstItem="Pb9-Vk-to8" firstAttribute="top" secondItem="KJs-hU-7ZK" secondAttribute="bottom" id="fdl-Un-aT4"/>
@@ -78,6 +114,15 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
+        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" id="wPn-mG-s4z">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+            <point key="canvasLocation" x="732" y="-484"/>
+        </textView>
     </objects>
     <resources>
         <image name="badge-ok" width="60" height="60"/>

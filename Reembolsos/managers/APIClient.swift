@@ -339,7 +339,7 @@ public class APIClient: HTTPClient {
         })
     }
 
-    public func historic(identifier: String, completionHandler: ((Bool) -> ())?) {
+    public func historic(identifier: String, completionHandler: ((Bool, HistoricDetailModel?) -> ())?) {
         let path = "detalleHistoricoReembolsos.php"
         let parameters: HTTPClientParameters = ["folioReembolso": identifier]
 
@@ -349,21 +349,19 @@ public class APIClient: HTTPClient {
                     parameters: parameters,
                     completionHandler: {
                         (success: Bool, response: HTTPURLResponse?, json: Any?) in
-                        if success, let json = json as? [HTTPClientResponseJSON] {
-                            NSLog("historic(identifier) success; json: \(json)")
-//                            do {
-//                                let transaction: TransactionDetailModel = try unbox(dictionary: json)
-//                                completionHandler?(true, transaction)
-//                            } catch let error {
-//                                NSLog("transaction(identifier) API call failed; unbox error: \(error)")
-//                                completionHandler?(false, nil)
-//                            }
+                        if success, let json = json as? HTTPClientResponseJSON {
+                            print(json)
+                            do {
+                                let historic: HistoricDetailModel = try unbox(dictionary: json)
+                                completionHandler?(true, historic)
+                            } catch let error {
+                                NSLog("historic(identifier) API call failed; unbox error: \(error)")
+                                completionHandler?(false, nil)
+                            }
                         } else {
                             NSLog("historic(identifier) API call failed")
-                            completionHandler?(false)
+                            completionHandler?(false, nil)
                         }
         })
-
     }
-
 }

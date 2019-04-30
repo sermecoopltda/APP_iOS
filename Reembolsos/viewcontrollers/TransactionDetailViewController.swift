@@ -62,6 +62,7 @@ class TransactionDetailViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tableFooterView: UIView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var notesTextView: UITextView!
 
     var identifier: String?
 
@@ -93,6 +94,8 @@ class TransactionDetailViewController: UIViewController {
             }
 
             statusIndicatorView.currentStateColor = transactionDetail.status.backgroundColor
+
+            notesTextView.text = transactionDetail.notes ?? ""
 
             tableView.reloadData()
         }
@@ -191,8 +194,7 @@ extension TransactionDetailViewController: UITableViewDataSource {
 
         case .notes:
             let cell = tableView.dequeueReusableCell(withIdentifier: statics.textCellIdentifier, for: indexPath) as! RefundTextTableViewCell
-            cell.textView?.text = transactionDetail?.notes ?? ""
-            cell.textView?.isEditable = false
+            cell.textView = notesTextView
             return cell
 
         default: return UITableViewCell()
