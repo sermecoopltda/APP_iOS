@@ -27,7 +27,7 @@ extension TransactionDetailModel: Unboxable {
         identifier = try unboxer.unbox(key: "folio")
         beneficiary = try unboxer.unbox(key: "beneficiario")
         amount = try unboxer.unbox(key: "monto")
-        notes = unboxer.unbox(key: "observaciones")
+        notes = unboxer.unbox(key: "observacion")
         documents = try unboxer.unbox(key: "documentos")
         statusText = try unboxer.unbox(key: "desc_estado")
         status = try unboxer.unbox(key: "estado")

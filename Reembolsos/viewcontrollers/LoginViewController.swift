@@ -80,7 +80,7 @@ class LoginViewController: UIViewController {
                 let controller = UIAlertController(title: "Error al Iniciar Sesión",
                                                    message: "El RUT o la contraseña especificados son incorrectos. Por favor revisa tus datos e intenta nuevamente.",
                                                    preferredStyle: .alert)
-                let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let dismissAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
                 controller.addAction(dismissAction)
                 self.present(controller, animated: true, completion: nil)
             }

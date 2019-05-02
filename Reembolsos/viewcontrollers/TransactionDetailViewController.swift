@@ -71,6 +71,7 @@ class TransactionDetailViewController: UIViewController {
     fileprivate var transactionDetail: TransactionDetailModel? {
         didSet {
             guard isViewLoaded, let transactionDetail = transactionDetail else { return }
+            NSLog("transactionDetail.notes: \(transactionDetail.notes)")
             // populate UI
             tableView.isHidden = false
             statusIndicatorView.isHidden = false
@@ -78,19 +79,19 @@ class TransactionDetailViewController: UIViewController {
             switch transactionDetail.status {
             case .submitted:
                 statusIndicatorView.currentState = .started
-                statusIndicatorView.setTitle(transactionDetail.status.title, for: .started)
+                statusIndicatorView.setTitle(transactionDetail.statusText, for: .started)
 
             case .rejected:
                 statusIndicatorView.currentState = .ended
-                statusIndicatorView.setTitle(transactionDetail.status.title, for: .ended)
+                statusIndicatorView.setTitle(transactionDetail.statusText, for: .ended)
 
             case .accepted:
                 statusIndicatorView.currentState = .ended
-                statusIndicatorView.setTitle(transactionDetail.status.title, for: .ended)
+                statusIndicatorView.setTitle(transactionDetail.statusText, for: .ended)
 
             default:
                 statusIndicatorView.currentState = .intermediate
-                statusIndicatorView.setTitle(transactionDetail.status.title, for: .intermediate)
+                statusIndicatorView.setTitle(transactionDetail.statusText, for: .intermediate)
             }
 
             statusIndicatorView.currentStateColor = transactionDetail.status.backgroundColor
