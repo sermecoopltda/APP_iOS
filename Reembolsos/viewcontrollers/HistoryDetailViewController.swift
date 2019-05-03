@@ -107,7 +107,7 @@ class HistoryDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Detalle de Transacción"
+        navigationItem.title = "Comprobante de Reembolso"
         dateFormatter.setLocalizedDateFormatFromTemplate("dMMyyyy")
         // navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "mail-icon"), style: .plain, target: nil, action: nil)
         badgeImageView.tintColor = UIColor(hex: "#009e10")
@@ -130,9 +130,11 @@ class HistoryDetailViewController: UIViewController {
         })
 
         guard let font = detailsButton.titleLabel?.font, let color = detailsButton.titleColor(for: .normal), let title = detailsButton.title(for: .normal) else { return }
-        var attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
-        attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
-        let attributedString = NSAttributedString(string: title, attributes: attributes)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
+        let attributedString = NSMutableAttributedString(string: "Para obtener mayor detalle de su reembolso, presione ", attributes: attributes)
+        var underlinedAttributes = attributes
+        underlinedAttributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
+        attributedString.append(NSAttributedString(string: "aquí", attributes: underlinedAttributes))
         detailsButton.setAttributedTitle(attributedString, for: .normal)
     }
 

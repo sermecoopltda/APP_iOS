@@ -71,13 +71,12 @@ class TransactionDetailViewController: UIViewController {
     fileprivate var transactionDetail: TransactionDetailModel? {
         didSet {
             guard isViewLoaded, let transactionDetail = transactionDetail else { return }
-            NSLog("transactionDetail.notes: \(transactionDetail.notes)")
             // populate UI
             tableView.isHidden = false
             statusIndicatorView.isHidden = false
 
             switch transactionDetail.status {
-            case .submitted:
+            case .submitted, .inReview:
                 statusIndicatorView.currentState = .started
                 statusIndicatorView.setTitle(transactionDetail.statusText, for: .started)
 

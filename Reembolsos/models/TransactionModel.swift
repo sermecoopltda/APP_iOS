@@ -28,7 +28,7 @@ public enum TransactionStatus: String, UnboxableEnum {
 
     var backgroundColor: UIColor {
         switch self {
-        case .submitted: return UIColor(hex: "#a2a2a2")
+        case .submitted, .inReview: return UIColor(hex: "#a2a2a2")
         case .accepted: return UIColor(hex: "#00be99")
         case .rejected: return UIColor(hex: "#be4040")
         default: return UIColor(hex: "#dcb12f")

@@ -93,7 +93,7 @@
 /* Begin PBXFileReference section */
 		133D76247AF95E0DD66A90B1 /* Pods-Reembolsos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reembolsos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reembolsos/Pods-Reembolsos.release.xcconfig"; sourceTree = "<group>"; };
 		1EDB2C50DFA942B2BC7893E3 /* Pods_Reembolsos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reembolsos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7606E6F42239817700C24D9E /* Reembolsos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reembolsos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7606E6F42239817700C24D9E /* Sermecoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sermecoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7606E6F72239817700C24D9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7606E6FE2239817A00C24D9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7606E7032239817A00C24D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 		7606E6F52239817700C24D9E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7606E6F42239817700C24D9E /* Reembolsos.app */,
+				7606E6F42239817700C24D9E /* Sermecoop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -401,7 +401,7 @@
 			);
 			name = Reembolsos;
 			productName = Reembolsos;
-			productReference = 7606E6F42239817700C24D9E /* Reembolsos.app */;
+			productReference = 7606E6F42239817700C24D9E /* Sermecoop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -734,7 +734,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cl.sermecoop.ios-app.reembolsos";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sermecoop;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -756,7 +756,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cl.sermecoop.ios-app.reembolsos";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sermecoop;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -833,7 +833,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cl.sermecoop.ios-app.reembolsos";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sermecoop;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

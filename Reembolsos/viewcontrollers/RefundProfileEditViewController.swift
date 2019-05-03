@@ -121,7 +121,7 @@ class RefundProfileEditViewController: UIViewController {
             emailTextField.text = user?.email
             phoneTextField.text = user?.phoneNumber
             bankTextField.text = user?.bankName
-            accountTextField.text = user?.bankAccount
+            accountTextField.text = "**\(user?.bankAccount.suffix(4) ?? "")"
 
             self.conditionallyEnableNextButton()
             // tableView.reloadData()
