@@ -16,16 +16,6 @@ public enum TransactionStatus: String, UnboxableEnum {
     case accepted = "4"
     case rejected = "6"
 
-    var title: String {
-        switch self {
-        case .submitted: return "Enviada"
-        case .inReview: return "En Revisión"
-        case .processing: return "Documentación en Proceso"
-        case .accepted: return "Documento Liquidado"
-        case .rejected: return "Rechazada por Contralor"
-        }
-    }
-
     var backgroundColor: UIColor {
         switch self {
         case .submitted, .inReview: return UIColor(hex: "#a2a2a2")

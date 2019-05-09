@@ -64,7 +64,7 @@ private enum RefundProfileEditTableViewEditableSectionRow: Int, RefundProfileEdi
     var title: String? {
         switch self {
         case .name: return "Nombre"
-        case .phoneNumber: return "Teléfono"
+        case .phoneNumber: return "Celular"
         case .email: return "E-mail"
         default: return nil
         }
@@ -213,16 +213,33 @@ class RefundProfileEditViewController: UIViewController {
         navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
+    private func failWithError(title: String, message: String) {
+        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+    }
+
     // MARK: Control Actions
 
     @objc func next(_ sender: Any) {
         view.endEditing(true)
+        guard let email = emailTextField.text, let phoneNumber = phoneTextField.text else { return }
+        if !Validator.isValidEmail(email) {
+            failWithError(title: "Error Validando E-mail", message: "La dirección de e-mail ingresada no es válida.")
+            return
+        }
+        if !Validator.isValidPhoneNumber(phoneNumber) {
+            failWithError(title: "Error Validando Teléfono", message: "El número telefónico ingresado no es válido: debe contener sólo 9 dígitos.")
+            return
+        }
+
         tableView.isUserInteractionEnabled = false
         navigationItem.hidesBackButton = true
         let activityIndicator = UIActivityIndicatorView(style: .white)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
-        APIClient.shared.updateProfile(name: nameTextField.text, phoneNumber: phoneTextField.text, email: emailTextField.text, completionHandler: {
+        APIClient.shared.updateProfile(name: nameTextField.text, phoneNumber: phoneNumber, email: email, completionHandler: {
             (success: Bool) in
             self.navigationItem.hidesBackButton = false
             self.tableView.isUserInteractionEnabled = true

@@ -31,6 +31,7 @@
 		763445BE225483EF00915BC7 /* StatusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763445BD225483EF00915BC7 /* StatusIndicatorView.swift */; };
 		763445C1225515D300915BC7 /* TrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763445BF225515D300915BC7 /* TrackingTableViewCell.swift */; };
 		763445C2225515D300915BC7 /* TrackingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763445C0225515D300915BC7 /* TrackingTableViewCell.xib */; };
+		763D29BD2284B437006CED9A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D29BC2284B437006CED9A /* Validator.swift */; };
 		763E136B226582A7005D9DAA /* RefundDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E1369226582A7005D9DAA /* RefundDocumentTableViewCell.swift */; };
 		763E136C226582A7005D9DAA /* RefundDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763E136A226582A7005D9DAA /* RefundDocumentTableViewCell.xib */; };
 		763E136E22659039005D9DAA /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E136D22659039005D9DAA /* PriceFormatter.swift */; };
@@ -119,6 +120,7 @@
 		763445BD225483EF00915BC7 /* StatusIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicatorView.swift; sourceTree = "<group>"; };
 		763445BF225515D300915BC7 /* TrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTableViewCell.swift; sourceTree = "<group>"; };
 		763445C0225515D300915BC7 /* TrackingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingTableViewCell.xib; sourceTree = "<group>"; };
+		763D29BC2284B437006CED9A /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		763E1369226582A7005D9DAA /* RefundDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDocumentTableViewCell.swift; sourceTree = "<group>"; };
 		763E136A226582A7005D9DAA /* RefundDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		763E136D22659039005D9DAA /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				76D72D5C2270413E0004F55E /* TransactionDetailModel.swift */,
 				760F6729227714F5003A7933 /* HistoricDetailModel.swift */,
 				76D72D5E227041800004F55E /* TransactionDocumentModel.swift */,
+				763D29BC2284B437006CED9A /* Validator.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				76E77486225AE7370017F10E /* DocumentModel.swift in Sources */,
 				76D72D5D2270413E0004F55E /* TransactionDetailModel.swift in Sources */,
 				7606E70C223985B000C24D9E /* LoginViewController.swift in Sources */,
+				763D29BD2284B437006CED9A /* Validator.swift in Sources */,
 				7652548A224D46EE00849401 /* TransactionDetailViewController.swift in Sources */,
 				763E13702265A93D005D9DAA /* UploadOperation.swift in Sources */,
 				76E7747E225ACFEB0017F10E /* StringProtocol.swift in Sources */,

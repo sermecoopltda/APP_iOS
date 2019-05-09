@@ -81,6 +81,15 @@ class ProfileEditViewController: UIViewController {
 
     @objc func done(_ sender: Any) {
         view.endEditing(true)
+        guard let email = emailTextField.text, let phoneNumber = phoneTextField.text else { return }
+        if !Validator.isValidEmail(email) {
+            failWithError(title: "Error Validando E-mail", message: "La dirección de e-mail ingresada no es válida.")
+            return
+        }
+        if !Validator.isValidPhoneNumber(phoneNumber) {
+            failWithError(title: "Error Validando Teléfono", message: "El número telefónico ingresado no es válido: debe contener sólo 9 dígitos.")
+            return
+        }
         tableView.isUserInteractionEnabled = false
         navigationItem.leftBarButtonItem?.isEnabled = false
         let activityIndicator = UIActivityIndicatorView(style: .white)
@@ -170,7 +179,7 @@ extension ProfileEditViewController: UITableViewDataSource {
             cell.isEditable = false
 
         case 1:
-            cell.titleLabel.text = "Teléfono"
+            cell.titleLabel.text = "Celular"
             cell.textField = phoneTextField
             cell.isEditable = true
 
