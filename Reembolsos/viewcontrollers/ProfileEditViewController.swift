@@ -77,6 +77,13 @@ class ProfileEditViewController: UIViewController {
         navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
+    private func failWithError(title: String, message: String) {
+        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+    }
+
     // MARK: Control Actions
 
     @objc func done(_ sender: Any) {
