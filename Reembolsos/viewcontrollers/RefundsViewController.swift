@@ -23,6 +23,7 @@ class RefundsViewController: UIViewController {
         refundButton.layer.borderColor = UIColor.white.cgColor
         refundButton.layer.borderWidth = 2
         refundButton.layer.masksToBounds = true
+        refundButton.titleLabel?.font = UIFont.boldAppFont(ofSize: 15)
     }
 
     // MARK: - Control Actions

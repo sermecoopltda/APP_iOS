@@ -13,6 +13,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        numberLabel.font = UIFont.appFont(ofSize: 19)
         numberLabel.text = nil
         numberLabel.layer.cornerRadius = numberLabel.bounds.size.width / 2
     }

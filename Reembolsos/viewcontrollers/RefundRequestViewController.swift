@@ -46,7 +46,7 @@ class RefundRequestViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     fileprivate var submitButtonItem: UIBarButtonItem {
-        return UIBarButtonItem(title: "Enviar", style: .done, target: self, action: #selector(RefundRequestViewController.submit(_:)))
+        return BarButtonItem.doneButtonItem(title: "Enviar", target: self, action: #selector(RefundRequestViewController.submit(_:)))
     }
 
     var benefitRules: BenefitRulesModel?
@@ -117,6 +117,8 @@ class RefundRequestViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(RefundRequestViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RefundRequestViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RefundRequestViewController.textDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
+
+        notesTextView.font = UIFont.appFont(ofSize: 15)
 
         tableView.isHidden = true
         activityIndicator.startAnimating()
@@ -361,7 +363,14 @@ extension RefundRequestViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - <UITableViewDelegate> Methods
+
 extension RefundRequestViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView, let oldFont = headerView.textLabel?.font else { return }
+        headerView.textLabel?.font = UIFont.appFont(ofSize: oldFont.pointSize)
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch RefundRequestTableViewSection(indexPath.section) {
         case .notes: return 78

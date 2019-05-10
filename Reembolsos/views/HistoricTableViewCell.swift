@@ -12,4 +12,11 @@ class HistoricTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel.font = UIFont.boldAppFont(ofSize: 15)
+        dateLabel.font = UIFont.appFont(ofSize: 13)
+        subtitleLabel.font = UIFont.appFont(ofSize: 14)
+    }
 }

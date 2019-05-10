@@ -82,6 +82,8 @@ class SegmentedViewController: UIViewController {
         if let viewControllers = viewControllers, viewControllers.count > 0 {
             selectedSegmentIndex = 0
         }
+
+        segmentedControl.setTitleTextAttributes([.font: UIFont.appFont(ofSize: 13)], for: .normal)
     }
 
     override func viewWillAppear(_ animated: Bool) {

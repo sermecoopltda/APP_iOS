@@ -48,9 +48,14 @@ class LoginViewController: UIViewController {
 
         conditionallyEnableLoginButton()
 
+        usernameField.font = UIFont.appFont(ofSize: 16)
+        passwordField.font = UIFont.appFont(ofSize: 16)
+        loginButton.titleLabel?.font = UIFont.boldAppFont(ofSize: 15)
+
         // usernameField.becomeFirstResponder()
 
-        guard let font = forgotPasswordButton.titleLabel?.font, let color = forgotPasswordButton.titleColor(for: .normal), let title = forgotPasswordButton.title(for: .normal) else { return }
+        guard let color = forgotPasswordButton.titleColor(for: .normal), let title = forgotPasswordButton.title(for: .normal) else { return }
+        let font = UIFont.appFont(ofSize: 15)
         var attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
         attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
         let attributedString = NSAttributedString(string: title, attributes: attributes)

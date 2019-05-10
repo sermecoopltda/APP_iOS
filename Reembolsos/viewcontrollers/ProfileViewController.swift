@@ -99,7 +99,7 @@ class ProfileViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(ProfileViewController.refreshControlValueChanged(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
         tableView.register(UINib(nibName: String(describing: ProfileTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.cellIdentifier)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Actualizar", style: .plain, target: self, action: #selector(ProfileViewController.edit(_:)))
+        navigationItem.leftBarButtonItem = BarButtonItem.plainButtonItem(title: "Actualizar", target: self, action: #selector(ProfileViewController.edit(_:)))
         navigationItem.title = "Mi Perfil"
     }
 
@@ -184,6 +184,11 @@ extension ProfileViewController: UITableViewDataSource {
 // MARK: - <UITableViewDelegate> Methods
 
 extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView, let oldFont = headerView.textLabel?.font else { return }
+        headerView.textLabel?.font = UIFont.appFont(ofSize: oldFont.pointSize)
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch ProfileTableViewSection(indexPath.section) {

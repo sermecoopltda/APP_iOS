@@ -30,13 +30,13 @@ class ProfileEditViewController: UIViewController {
     }
 
     fileprivate var doneButtonItem: UIBarButtonItem {
-        return UIBarButtonItem(title: "Aceptar", style: .done, target: self, action: #selector(ProfileEditViewController.done(_:)))
+        return BarButtonItem.doneButtonItem(title: "Aceptar", target: self, action: #selector(ProfileEditViewController.done(_:)))
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Actualizar Datos"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ProfileEditViewController.cancel(_:)))
+        navigationItem.leftBarButtonItem = BarButtonItem.plainButtonItem(title: "Cancelar", target: self, action: #selector(ProfileEditViewController.cancel(_:)))
         tableView.register(UINib(nibName: String(describing: ProfileEditTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.cellIdentifier)
 
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileEditViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)

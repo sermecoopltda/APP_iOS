@@ -36,6 +36,7 @@ class RefundDocumentTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleLabel.font = UIFont.boldAppFont(ofSize: 16)
         titleLabel.text = nil
         showsIcon = true 
         iconImageView.tintColor = UIColor(hex: "#0061ff")

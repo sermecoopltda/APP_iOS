@@ -54,6 +54,9 @@ class TransactionsHistoryViewController: UIViewController {
 
         refreshControl.addTarget(self, action: #selector(TransactionsHistoryViewController.refreshControlValueChanged(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
+
+        dateButton.titleLabel?.font = UIFont.boldAppFont(ofSize: 17)
+        
         date = Date()
         refreshData()
     }

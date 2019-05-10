@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryDetailViewController" customModule="Reembolsos" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryDetailViewController" customModule="Sermecoop" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="M2J-bi-8xY" id="GSY-t5-mrr"/>
                 <outlet property="badgeImageView" destination="rBh-ge-JmS" id="GO8-SG-yz9"/>
@@ -18,6 +18,7 @@
                 <outlet property="notesTextView" destination="wPn-mG-s4z" id="Iu9-Xa-SHx"/>
                 <outlet property="tableFooterView" destination="rP8-Av-7HT" id="935-JV-gcf"/>
                 <outlet property="tableView" destination="Pb9-Vk-to8" id="e9N-j1-DRF"/>
+                <outlet property="titleLabel" destination="LLm-LQ-Hb4" id="iyZ-f6-RB4"/>
                 <outlet property="totalLabel" destination="EkN-7o-EXQ" id="gXl-XA-hTW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -105,7 +105,7 @@ class CalendarMonthViewController: UIViewController {
 
         for weekday in weekdays {
             let label = UILabel(frame: .zero)
-            label.font = UIFont.preferredFont(forTextStyle: .caption1)
+            label.font = UIFont.appFont(ofSize: 12)
             label.textAlignment = .center
             label.text = weekday
             headerStackView.addArrangedSubview(label)

@@ -10,11 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RefundProfileEditViewController" customModule="Reembolsos" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RefundProfileEditViewController" customModule="Sermecoop" customModuleProvider="target">
             <connections>
                 <outlet property="accountTextField" destination="OAo-di-c1f" id="ctQ-GN-zgJ"/>
                 <outlet property="bankTextField" destination="jRB-O8-bSw" id="snJ-NE-fsT"/>
                 <outlet property="callButton" destination="ffj-h3-WlK" id="1EM-Si-AEo"/>
+                <outlet property="disclaimerLabel" destination="ORI-Og-5uz" id="8gF-Yo-ocM"/>
                 <outlet property="emailTextField" destination="3Ek-hk-Xvn" id="5lm-Yi-Q6j"/>
                 <outlet property="nameTextField" destination="Mmv-Sd-GOu" id="w6i-WW-E89"/>
                 <outlet property="phoneTextField" destination="TeR-pH-JYy" id="F7m-Zy-ip2"/>

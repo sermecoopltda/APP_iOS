@@ -18,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        for familyName in UIFont.familyNames {
+//            for fontName in UIFont.fontNames(forFamilyName: familyName) {
+//                NSLog("** fontName: \(fontName)")
+//            }
+//        }
+
+        UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont.appFont(ofSize: 10)], for: .normal)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
 

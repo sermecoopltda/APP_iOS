@@ -15,7 +15,6 @@
 		7606E713223A0A1F00C24D9E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E712223A0A1F00C24D9E /* UIColor.swift */; };
 		7606E716223A0E1700C24D9E /* RefundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E714223A0E1700C24D9E /* RefundsViewController.swift */; };
 		7606E717223A0E1700C24D9E /* RefundsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7606E715223A0E1700C24D9E /* RefundsViewController.xib */; };
-		7606E71A223A0E2C00C24D9E /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E718223A0E2C00C24D9E /* TransactionsViewController.swift */; };
 		7606E71B223A0E2C00C24D9E /* TransactionsTrackingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7606E719223A0E2C00C24D9E /* TransactionsTrackingViewController.xib */; };
 		7606E71E223A0E3800C24D9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E71C223A0E3800C24D9E /* ProfileViewController.swift */; };
 		7606E71F223A0E3800C24D9E /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7606E71D223A0E3800C24D9E /* ProfileViewController.xib */; };
@@ -32,6 +31,12 @@
 		763445C1225515D300915BC7 /* TrackingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763445BF225515D300915BC7 /* TrackingTableViewCell.swift */; };
 		763445C2225515D300915BC7 /* TrackingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763445C0225515D300915BC7 /* TrackingTableViewCell.xib */; };
 		763D29BD2284B437006CED9A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D29BC2284B437006CED9A /* Validator.swift */; };
+		763D29C32284C4E1006CED9A /* CenturyGothic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 763D29C02284BE7D006CED9A /* CenturyGothic-Bold.ttf */; };
+		763D29C42284C4E1006CED9A /* CenturyGothic-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 763D29C22284BE7D006CED9A /* CenturyGothic-BoldItalic.ttf */; };
+		763D29C52284C4E1006CED9A /* CenturyGothic-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 763D29BF2284BE7D006CED9A /* CenturyGothic-Italic.ttf */; };
+		763D29C62284C4E1006CED9A /* CenturyGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 763D29C12284BE7D006CED9A /* CenturyGothic.ttf */; };
+		763D29C82284E3E0006CED9A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D29C72284E3E0006CED9A /* UIFont.swift */; };
+		763D29CA2284FC2F006CED9A /* BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763D29C92284FC2F006CED9A /* BarButtonItem.swift */; };
 		763E136B226582A7005D9DAA /* RefundDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E1369226582A7005D9DAA /* RefundDocumentTableViewCell.swift */; };
 		763E136C226582A7005D9DAA /* RefundDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763E136A226582A7005D9DAA /* RefundDocumentTableViewCell.xib */; };
 		763E136E22659039005D9DAA /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E136D22659039005D9DAA /* PriceFormatter.swift */; };
@@ -104,7 +109,6 @@
 		7606E712223A0A1F00C24D9E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		7606E714223A0E1700C24D9E /* RefundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundsViewController.swift; sourceTree = "<group>"; };
 		7606E715223A0E1700C24D9E /* RefundsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundsViewController.xib; sourceTree = "<group>"; };
-		7606E718223A0E2C00C24D9E /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		7606E719223A0E2C00C24D9E /* TransactionsTrackingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsTrackingViewController.xib; sourceTree = "<group>"; };
 		7606E71C223A0E3800C24D9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7606E71D223A0E3800C24D9E /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -121,6 +125,12 @@
 		763445BF225515D300915BC7 /* TrackingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTableViewCell.swift; sourceTree = "<group>"; };
 		763445C0225515D300915BC7 /* TrackingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackingTableViewCell.xib; sourceTree = "<group>"; };
 		763D29BC2284B437006CED9A /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		763D29BF2284BE7D006CED9A /* CenturyGothic-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CenturyGothic-Italic.ttf"; sourceTree = "<group>"; };
+		763D29C02284BE7D006CED9A /* CenturyGothic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CenturyGothic-Bold.ttf"; sourceTree = "<group>"; };
+		763D29C12284BE7D006CED9A /* CenturyGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CenturyGothic.ttf; sourceTree = "<group>"; };
+		763D29C22284BE7D006CED9A /* CenturyGothic-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CenturyGothic-BoldItalic.ttf"; sourceTree = "<group>"; };
+		763D29C72284E3E0006CED9A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		763D29C92284FC2F006CED9A /* BarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItem.swift; sourceTree = "<group>"; };
 		763E1369226582A7005D9DAA /* RefundDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundDocumentTableViewCell.swift; sourceTree = "<group>"; };
 		763E136A226582A7005D9DAA /* RefundDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		763E136D22659039005D9DAA /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
@@ -244,7 +254,6 @@
 				7606E70B223985B000C24D9E /* LoginViewController.xib */,
 				7606E714223A0E1700C24D9E /* RefundsViewController.swift */,
 				7606E715223A0E1700C24D9E /* RefundsViewController.xib */,
-				7606E718223A0E2C00C24D9E /* TransactionsViewController.swift */,
 				7606E71C223A0E3800C24D9E /* ProfileViewController.swift */,
 				7606E71D223A0E3800C24D9E /* ProfileViewController.xib */,
 				76DA4BAD2240A2950065174B /* RefundTermsViewController.swift */,
@@ -255,10 +264,10 @@
 				76A1BAF122412851003C9BFA /* RefundRequestViewController.xib */,
 				76A1BAFC2241E005003C9BFA /* SegmentedViewController.swift */,
 				76A1BAFD2241E005003C9BFA /* SegmentedViewController.xib */,
-				76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */,
-				760F6721227702BD003A7933 /* TransactionsHistoryViewController.xib */,
 				76A1BB042241E0D0003C9BFA /* TransactionsTrackingViewController.swift */,
 				7606E719223A0E2C00C24D9E /* TransactionsTrackingViewController.xib */,
+				76A1BB0C2241F0F5003C9BFA /* TransactionsHistoryViewController.swift */,
+				760F6721227702BD003A7933 /* TransactionsHistoryViewController.xib */,
 				76525488224D46EE00849401 /* TransactionDetailViewController.swift */,
 				76525489224D46EE00849401 /* TransactionDetailViewController.xib */,
 				7652548C224D46FF00849401 /* HistoryDetailViewController.swift */,
@@ -313,13 +322,26 @@
 				76DA4BBC2240BBB00065174B /* UIViewAnimationOptionsWithCurve.swift */,
 				76E7747D225ACFEB0017F10E /* StringProtocol.swift */,
 				763E138122669972005D9DAA /* String.swift */,
+				763D29C72284E3E0006CED9A /* UIFont.swift */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		763D29BE2284BE6D006CED9A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				763D29C02284BE7D006CED9A /* CenturyGothic-Bold.ttf */,
+				763D29C22284BE7D006CED9A /* CenturyGothic-BoldItalic.ttf */,
+				763D29BF2284BE7D006CED9A /* CenturyGothic-Italic.ttf */,
+				763D29C12284BE7D006CED9A /* CenturyGothic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		76DA4BB12240A2F80065174B /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				763D29BE2284BE6D006CED9A /* Fonts */,
 				76DA4BB22240A31D0065174B /* refund_terms.html */,
 			);
 			path = resources;
@@ -354,6 +376,7 @@
 				760F6729227714F5003A7933 /* HistoricDetailModel.swift */,
 				76D72D5E227041800004F55E /* TransactionDocumentModel.swift */,
 				763D29BC2284B437006CED9A /* Validator.swift */,
+				763D29C92284FC2F006CED9A /* BarButtonItem.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -461,7 +484,9 @@
 				7606E71F223A0E3800C24D9E /* ProfileViewController.xib in Resources */,
 				76DA4BBB2240AE550065174B /* ProfileEditTableViewCell.xib in Resources */,
 				76DA4BB02240A2950065174B /* RefundTermsViewController.xib in Resources */,
+				763D29C62284C4E1006CED9A /* CenturyGothic.ttf in Resources */,
 				76A1BAF72241768B003C9BFA /* RefundRequestTableViewCell.xib in Resources */,
+				763D29C42284C4E1006CED9A /* CenturyGothic-BoldItalic.ttf in Resources */,
 				76DA4BB32240A31D0065174B /* refund_terms.html in Resources */,
 				763E137A2266967A005D9DAA /* CalendarCollectionViewCell.xib in Resources */,
 				76D72D692270F2B90004F55E /* ProfileEditViewController.xib in Resources */,
@@ -474,10 +499,12 @@
 				763445C2225515D300915BC7 /* TrackingTableViewCell.xib in Resources */,
 				763E13802266969A005D9DAA /* CalendarMonthViewController.xib in Resources */,
 				760F672622770CB0003A7933 /* CalendarNavControl.xib in Resources */,
+				763D29C32284C4E1006CED9A /* CenturyGothic-Bold.ttf in Resources */,
 				760F6720227700B6003A7933 /* HistoricTableViewCell.xib in Resources */,
 				7652548B224D46EE00849401 /* TransactionDetailViewController.xib in Resources */,
 				76DA4BB72240ACC90065174B /* RefundProfileEditViewController.xib in Resources */,
 				763E136C226582A7005D9DAA /* RefundDocumentTableViewCell.xib in Resources */,
+				763D29C52284C4E1006CED9A /* CenturyGothic-Italic.ttf in Resources */,
 				7606E6FF2239817A00C24D9E /* Assets.xcassets in Resources */,
 				7606E70D223985B000C24D9E /* LoginViewController.xib in Resources */,
 			);
@@ -554,6 +581,7 @@
 				76DA4BBA2240AE550065174B /* ProfileEditTableViewCell.swift in Sources */,
 				7606E716223A0E1700C24D9E /* RefundsViewController.swift in Sources */,
 				76DA4BBD2240BBB00065174B /* UIViewAnimationOptionsWithCurve.swift in Sources */,
+				763D29CA2284FC2F006CED9A /* BarButtonItem.swift in Sources */,
 				76E7747A225700F20017F10E /* APIClient.swift in Sources */,
 				76D72D642270EDEB0004F55E /* ProfileTableViewCell.swift in Sources */,
 				76A1BAFA22419598003C9BFA /* RefundTextTableViewCell.swift in Sources */,
@@ -581,7 +609,6 @@
 				76A1BB0D2241F0F5003C9BFA /* TransactionsHistoryViewController.swift in Sources */,
 				763E13792266967A005D9DAA /* CalendarCollectionViewCell.swift in Sources */,
 				763E137E2266969A005D9DAA /* CalendarMonthViewController.swift in Sources */,
-				7606E71A223A0E2C00C24D9E /* TransactionsViewController.swift in Sources */,
 				760F672822770CD9003A7933 /* CalendarNavControl.swift in Sources */,
 				760F671F227700B6003A7933 /* HistoricTableViewCell.swift in Sources */,
 				76E77471225700190017F10E /* AssetsClient.swift in Sources */,
@@ -597,6 +624,7 @@
 				7606E6F82239817700C24D9E /* AppDelegate.swift in Sources */,
 				763EE1212260646200BF6921 /* BeneficiaryModel.swift in Sources */,
 				7652548E224D46FF00849401 /* HistoryDetailViewController.swift in Sources */,
+				763D29C82284E3E0006CED9A /* UIFont.swift in Sources */,
 				76E77488225AE7B60017F10E /* BenefitModel.swift in Sources */,
 				76E77478225700780017F10E /* SessionModel.swift in Sources */,
 				7606E7102239CF3500C24D9E /* CustomTextField.swift in Sources */,

@@ -27,6 +27,11 @@ class CalendarNavControl: UIView {
         }
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel.font = UIFont.boldAppFont(ofSize: 17)
+    }
+
     @IBAction func prevButtonTouched(_ sender: Any) {
         prevButtonHandler?()
     }

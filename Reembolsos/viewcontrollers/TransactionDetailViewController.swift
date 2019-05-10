@@ -111,6 +111,8 @@ class TransactionDetailViewController: UIViewController {
         tableView.register(UINib(nibName: String(describing: RefundDocumentTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.documentCellIdentifier)
         tableView.register(UINib(nibName: String(describing: RefundTextTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.textCellIdentifier)
 
+        notesTextView.font = UIFont.appFont(ofSize: 15)
+
         statusIndicatorView.isHidden = true
         tableView.isHidden = true
         activityIndicator.startAnimating()
@@ -209,6 +211,11 @@ extension TransactionDetailViewController: UITableViewDataSource {
 // MARK: - <UITableViewDelegate> Methods
 
 extension TransactionDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView, let oldFont = headerView.textLabel?.font else { return }
+        headerView.textLabel?.font = UIFont.appFont(ofSize: oldFont.pointSize)
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch TransactionDetailTableViewSection(indexPath.section) {
         case .documents: return UITableView.automaticDimension

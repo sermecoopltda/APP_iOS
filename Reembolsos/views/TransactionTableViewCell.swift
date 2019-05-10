@@ -19,5 +19,9 @@ class TransactionTableViewCell: UITableViewCell {
         statusIndicator.layer.cornerRadius = statusIndicator.bounds.size.height / 2
         statusIndicator.layer.borderColor = UIColor(hex: "#999999").withAlphaComponent(0.2).cgColor
         statusIndicator.layer.borderWidth = 1
+
+        titleLabel.font = UIFont.boldAppFont(ofSize: 15)
+        dateLabel.font = UIFont.appFont(ofSize: 13)
+        subtitleLabel.font = UIFont.appFont(ofSize: 14)
     }
 }

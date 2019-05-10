@@ -30,8 +30,8 @@ class RefundTermsViewController: UIViewController {
         activityIndicator.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
         view.addSubview(activityIndicator)
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(RefundTermsViewController.cancel(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Aceptar", style: .done, target: self, action: #selector(RefundTermsViewController.accept(_:)))
+        navigationItem.leftBarButtonItem = BarButtonItem.plainButtonItem(title: "Cancelar", target: self, action: #selector(RefundTermsViewController.cancel(_:)))
+        navigationItem.rightBarButtonItem = BarButtonItem.doneButtonItem(title: "Aceptar", target: self, action: #selector(RefundTermsViewController.accept(_:)))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         guard
@@ -51,7 +51,7 @@ class RefundTermsViewController: UIViewController {
                     htmlString
                         .replacingOccurrences(of: "%%RULES_HTML_CONTENTS%%", with: rulesHTML.joined(separator: "\n"))
                         .replacingOccurrences(of: "%%TERMS_URL%%", with: benefitRules.termsURL.absoluteString)
-                    , baseURL: nil)
+                    , baseURL: Bundle.main.bundleURL)
             } else {
                 self.activityIndicator.stopAnimating()
                 let controller = UIAlertController(title: "Error Obteniendo Datos",

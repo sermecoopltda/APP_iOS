@@ -26,7 +26,9 @@ class RefundRequestTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleLabel.font = UIFont.boldAppFont(ofSize: 16)
         titleLabel.text = nil
+        actionLabel.font = UIFont.appFont(ofSize: 14)
         actionText = nil
     }
 

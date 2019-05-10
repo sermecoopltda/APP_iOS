@@ -124,7 +124,7 @@ class StatusIndicatorView: UIView {
         paragraphStyle.alignment = .center
         paragraphStyle.lineBreakMode = .byWordWrapping
 
-        var attributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .caption1), .paragraphStyle: paragraphStyle]
+        var attributes: [NSAttributedString.Key: Any] = [.font: UIFont.appFont(ofSize: 12), .paragraphStyle: paragraphStyle]
         if let title = title(for: .started) {
             attributes[.foregroundColor] = darkColor
             let title1Rect = CGRect(x: 0, y: statics.largeCircleDiameter, width: bounds.size.width / 3, height: bounds.size.height - statics.largeCircleDiameter).insetBy(dx: 5, dy: 5)

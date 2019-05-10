@@ -14,7 +14,9 @@ class ProfileTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleLabel.font = UIFont.boldAppFont(ofSize: 16)
         titleLabel.text = nil
+        detailLabel.font = UIFont.appFont(ofSize: 16)
         detailLabel.text = nil
     }
 

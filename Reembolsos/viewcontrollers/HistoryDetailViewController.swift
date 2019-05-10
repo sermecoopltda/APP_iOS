@@ -86,6 +86,7 @@ class HistoryDetailViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var badgeImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var totalLabel: UILabel!
     @IBOutlet var detailsButton: UIButton!
     @IBOutlet var tableFooterView: UIView!
@@ -114,6 +115,10 @@ class HistoryDetailViewController: UIViewController {
         tableView.register(UINib(nibName: String(describing: TrackingTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.cellIdentifier)
         tableView.register(UINib(nibName: String(describing: RefundTextTableViewCell.self), bundle: nil), forCellReuseIdentifier: statics.textCellIdentifier)
 
+        notesTextView.font = UIFont.appFont(ofSize: 15)
+        titleLabel.font = UIFont.appFont(ofSize: 19)
+        totalLabel.font = UIFont.boldAppFont(ofSize: 23)
+
         tableView.isHidden = true
         activityIndicator.startAnimating()
 
@@ -129,7 +134,8 @@ class HistoryDetailViewController: UIViewController {
             }
         })
 
-        guard let font = detailsButton.titleLabel?.font, let color = detailsButton.titleColor(for: .normal), let title = detailsButton.title(for: .normal) else { return }
+        guard let color = detailsButton.titleColor(for: .normal) else { return }
+        let font = UIFont.appFont(ofSize: 15)
         let attributes: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: color]
         let attributedString = NSMutableAttributedString(string: "Para obtener mayor detalle de su reembolso, presione ", attributes: attributes)
         var underlinedAttributes = attributes
@@ -218,6 +224,11 @@ extension HistoryDetailViewController: UITableViewDataSource {
 // MARK: - <UITableViewDelegate> Methods
 
 extension HistoryDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView, let oldFont = headerView.textLabel?.font else { return }
+        headerView.textLabel?.font = UIFont.appFont(ofSize: oldFont.pointSize)
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch HistoryDetailTableViewSection(indexPath.section) {
         case .notes: return 78

@@ -41,8 +41,8 @@ class CalendarViewController: UIPageViewController {
         dataSource = self
         delegate = self
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(CalendarViewController.cancel(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CalendarViewController.done(_:)))
+        navigationItem.leftBarButtonItem = BarButtonItem.plainButtonItem(title: "Cancelar", target: self, action: #selector(CalendarViewController.cancel(_:)))
+        navigationItem.rightBarButtonItem = BarButtonItem.doneButtonItem(title: "Aceptar", target: self, action: #selector(CalendarViewController.done(_:)))
 
         if let date = date {
             let dateFormatter = DateFormatter()

@@ -113,6 +113,7 @@ class RefundProfileEditViewController: UIViewController {
     @IBOutlet var accountTextField: UITextField!
     @IBOutlet var callButton: UIButton!
     @IBOutlet var tableFooterView: UIView!
+    @IBOutlet var disclaimerLabel: UILabel!
 
     fileprivate var user: UserModel? {
         didSet {
@@ -129,7 +130,7 @@ class RefundProfileEditViewController: UIViewController {
     }
 
     fileprivate var nextButtonItem: UIBarButtonItem {
-        return UIBarButtonItem(title: "Siguiente", style: .done, target: self, action: #selector(RefundProfileEditViewController.next(_:)))
+        return BarButtonItem.doneButtonItem(title: "Siguiente", target: self, action: #selector(RefundProfileEditViewController.next(_:)))
     }
 
     fileprivate var textfields: [IndexPath: UITextField] = [:]
@@ -147,6 +148,9 @@ class RefundProfileEditViewController: UIViewController {
         callButton.layer.cornerRadius = callButton.bounds.size.height / 2
         callButton.layer.borderWidth = 2
         callButton.layer.borderColor = UIColor(hex: "#333333").cgColor
+        callButton.titleLabel?.font = UIFont.boldAppFont(ofSize: 15)
+
+        disclaimerLabel.font = UIFont.appFont(ofSize: 13)
 
         refreshProfile()
     }
@@ -345,6 +349,11 @@ extension RefundProfileEditViewController: UITableViewDataSource {
 // MARK: - <UITableViewDelegate> Methods
 
 extension RefundProfileEditViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView, let oldFont = headerView.textLabel?.font else { return }
+        headerView.textLabel?.font = UIFont.appFont(ofSize: oldFont.pointSize)
+    }
+
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if RefundProfileEditTableViewSection(indexPath.section) == .editable { return indexPath }
         return nil

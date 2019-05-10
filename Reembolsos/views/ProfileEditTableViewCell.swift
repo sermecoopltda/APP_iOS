@@ -23,13 +23,19 @@ class ProfileEditTableViewCell: UITableViewCell {
     var textField: UITextField? {
         didSet {
             oldValue?.removeFromSuperview()
-            guard let textField = textField else {
+            guard let textField = textField, let oldFont = textField.font else {
                 return
             }
             textField.textAlignment = .right
             textFieldContainerView.addSubview(textField)
             textField.frame = textFieldContainerView.bounds
+            textField.font = UIFont.appFont(ofSize: oldFont.pointSize)
         }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel.font = UIFont.boldAppFont(ofSize: 16)
     }
 
     override func prepareForReuse() {
