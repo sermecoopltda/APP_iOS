@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>CenturyGothic.ttf</string>
-		<string>CenturyGothic-Bold.ttf</string>
-		<string>CenturyGothic-BoldItalic.ttf</string>
-		<string>CenturyGothic-Italic.ttf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>es</string>
 	<key>CFBundleDisplayName</key>
@@ -33,6 +26,13 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Para fotografiar los documentos que debes adjuntar con cada solicitud de reembolso.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CenturyGothic.ttf</string>
+		<string>CenturyGothic-Bold.ttf</string>
+		<string>CenturyGothic-BoldItalic.ttf</string>
+		<string>CenturyGothic-Italic.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashViewController</string>
 	<key>UIRequiredDeviceCapabilities</key>
